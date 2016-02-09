@@ -1,0 +1,9 @@
+var Omg = new Backbone.Marionette.Application();
+Omg.Views = {};
+Omg.Layouts = {};
+Omg.Models = {};
+Omg.Collections = {};
+Omg.Routers = {};
+Omg.Helpers = {};
+Omg.layouts = {};
+Omg.Utils = {}; 

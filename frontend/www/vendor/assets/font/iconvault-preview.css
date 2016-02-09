@@ -1,0 +1,70 @@
+/*
+ * Created with iconvau.lt
+ */
+
+@font-face {
+  font-family: "iconvault";
+  src: url("iconvault_forecastfont.eot");
+  src: url("iconvault_forecastfont.eot?#iefix") format("embedded-opentype"),
+       url("iconvault_forecastfont.woff") format("woff"),
+       url("iconvault_forecastfont.ttf") format("truetype"),
+       url("iconvault_forecastfont.svg#iconvault") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-night:before,
+.icon-sunny:before,
+.icon-frosty:before,
+.icon-windysnow:before,
+.icon-showers:before,
+.icon-basecloud:before,
+.icon-cloud:before,
+.icon-rainy:before,
+.icon-mist:before,
+.icon-windysnowcloud:before,
+.icon-drizzle:before,
+.icon-snowy:before,
+.icon-sleet:before,
+.icon-moon:before,
+.icon-windyrain:before,
+.icon-hail:before,
+.icon-sunset:before,
+.icon-windyraincloud:before,
+.icon-sunrise:before,
+.icon-sun:before,
+.icon-thunder:before,
+.icon-windy:before {
+  font-family: "iconvault";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.icon-night:before { content: "\f100"; }
+.icon-sunny:before { content: "\f101"; }
+.icon-frosty:before { content: "\f102"; }
+.icon-windysnow:before { content: "\f103"; }
+.icon-showers:before { content: "\f104"; }
+.icon-basecloud:before { content: "\f105"; }
+.icon-cloud:before { content: "\f106"; }
+.icon-rainy:before { content: "\f107"; }
+.icon-mist:before { content: "\f108"; }
+.icon-windysnowcloud:before { content: "\f109"; }
+.icon-drizzle:before { content: "\f10a"; }
+.icon-snowy:before { content: "\f10b"; }
+.icon-sleet:before { content: "\f10c"; }
+.icon-moon:before { content: "\f10d"; }
+.icon-windyrain:before { content: "\f10e"; }
+.icon-hail:before { content: "\f10f"; }
+.icon-sunset:before { content: "\f110"; }
+.icon-windyraincloud:before { content: "\f111"; }
+.icon-sunrise:before { content: "\f112"; }
+.icon-sun:before { content: "\f113"; }
+.icon-thunder:before { content: "\f114"; }
+.icon-windy:before { content: "\f115"; }
