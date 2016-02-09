@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- manifest="manifest.appcache"> -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, minimal-ui" />
+
+    <meta name="google-site-verification" content="hLSseO40xIM9Z4SJKlR0Qm2zM7VSqeTcGTchTTkLLic" />
+    <link href="https://plus.google.com/+omgtransit" rel="publisher" />
+
+    <meta name="keywords" content="omg transit, omgtransit, minneapolis bus schedule, twin cities bus schedule, real time transit information, real time bus tracking, real time bus schedule, metro transit schedule, minneapolis transit, st paul transit, light rail arrival times, car2go availability, car share availability, bike share availability" />
+    <meta name="description" content="Get real-time information about buses, light rail, car-shares (i.e. car2go), bike-shares, and more, all in one easy-to-use interface."/>
+
+    <title>OMG Transit - Real-time transit information and availability</title>
+    <meta property="og:title"       content="OMG Transit - Real-time transit information and availability" />
+    <meta property="og:site_name"   content="OMG Transit" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://omgtransit.com" />
+    <meta property="og:image"       content="https://omgtransit.com/assets/images/logo200.png" />
+    <meta property="og:description" content="Get real-time information about buses, light rail, car-shares (i.e. car2go), bike-shares, and more, all in one easy-to-use interface." />
+    <meta property="fb:admins"      content="25900199" />
+
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:site"        content="@omgtransit">
+    <meta name="twitter:creator"     content="@omgtransit">
+    <meta name="twitter:title"       content="OMG Transit - Real-time transit information and availability">
+    <meta name="twitter:description" content="Get real-time information about buses, light rail, car-shares (i.e. car2go), bike-shares, and more, all in one easy-to-use interface.">
+    <meta name="twitter:image"       content="https://omgtransit.com/assets/images/logo200.png">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="57x57"   href="/assets/images/logo57.png"  />
+    <link rel="apple-touch-icon" sizes="72x72"   href="/assets/images/logo72.png"  />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/logo114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/logo144.png" />
+
+    <!-- build:css assets/stylesheets/style.css -->
+      <link rel="stylesheet" type="text/css" href="vendor/assets/stylesheets/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="vendor/assets/stylesheets/bootstrap-responsive.min.css" />
+      <link rel="stylesheet" type="text/css" href="vendor/assets/stylesheets/font-awesome.css" />
+      <link rel="stylesheet" type="text/css" href="vendor/assets/stylesheets/weather.css" />
+      <link rel="stylesheet" type="text/css" href="vendor/assets/stylesheets/fonts.css" />
+
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap-overrides.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/omgfonts.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/home.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/stops.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/favorites.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/login.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/decision-engine.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/utility.css" />
+      <link rel="stylesheet" type="text/css" href="assets/stylesheets/platform.css" />
+    <!-- endbuild -->
+  </head>
+  <body>
+    <a href="https://plus.google.com/+omgtransit" rel="publisher" style="display:none">Google+</a>
+    <div id="application"></div>
+
+    <!-- Google Maps -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+    <!-- Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      if ( document.location.protocol === "file:" ) {
+        //ga('create', 'UA-41367617-5', 'omgtransit.com'); // Updated 9/22
+      } else {
+        ga('create', 'UA-41367617-3', 'omgtransit.com'); // Updated 9/22
+      }
+
+      ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-41367617-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+
+    <!-- @if DEBUG -->
+    <script src="assets/javascripts/utils/flurry.js"></script>
+    <script src="cordova.js"></script>
+    <!-- @endif -->
+    <!-- build:js assets/javascripts/build.js -->
+      <!-- Vendor Specific -->
+      <script src="vendor/assets/javascripts/jquery.min.js"></script>
+      <script src="vendor/assets/javascripts/jquery.cookie.js"></script>
+      <script src="vendor/assets/javascripts/hammer.min.js"></script>
+      <script src="vendor/assets/javascripts/pull-to-refresh.js"></script>
+      <script src="vendor/assets/javascripts/underscore-min.js"></script>
+      <script src="vendor/assets/javascripts/backbone-min.js"></script>
+      <script src="vendor/assets/javascripts/backbone.marionette.min.js"></script>
+      <script src="vendor/assets/javascripts/bootstrap.min.js"></script>
+      <script src="vendor/assets/javascripts/moment.min.js"></script>
+      <script src="vendor/assets/javascripts/chart.min.js"></script>
+
+      <!-- App Generic -->
+      <script src="assets/javascripts/omg.js"></script>
+      <script src="assets/javascripts/config.js"></script>
+      <script src="assets/javascripts/utils/geo.js"></script>
+      <script src="assets/javascripts/utils/google.js"></script>
+      <script src="assets/javascripts/utils/push.js"></script>
+      <script src="assets/javascripts/utils/alert.js"></script>
+      <script src="assets/javascripts/utils/markerclusterer_compiled.js"></script>
+      <script src="assets/javascripts/utils/spiderfy.min.js"></script>
+      <script src="assets/javascripts/utils/launcher.js"></script>
+
+      <!-- Models -->
+      <script src="assets/javascripts/models/user.js"></script>
+      <script src="assets/javascripts/models/stop.js"></script>
+      <script src="assets/javascripts/models/bus_eta.js"></script>
+      <script src="assets/javascripts/models/geolocation.js"></script>
+      <script src="assets/javascripts/models/favorite.js"></script>
+      <script src="assets/javascripts/models/alert.js"></script>
+      <script src="assets/javascripts/models/filter.js"></script>
+      <script src="assets/javascripts/models/car2go.js"></script>
+      <script src="assets/javascripts/models/messages.js"></script>
+      <script src="assets/javascripts/models/password_recovery.js"></script>
+      <script src="assets/javascripts/models/route.js"></script>
+      
+      <!-- App Startup -->
+      <script src="assets/javascripts/templates.js"></script>
+      <script src="assets/javascripts/app.js"></script>
+      <script src="assets/javascripts/helpers/app_helpers.js"></script>
+
+      <!-- Collections -->
+      <script src="assets/javascripts/collections/table.js"></script>
+      <script src="assets/javascripts/collections/bus_eta.js"></script>
+      <script src="assets/javascripts/collections/favorites.js"></script>
+      <script src="assets/javascripts/collections/alerts.js"></script>
+      <script src="assets/javascripts/collections/routes.js"></script>
+      <script src="assets/javascripts/collections/rideshares.js"></script>
+
+      <!-- Partial Views -->
+      <script src="assets/javascripts/views/partials/navbar.js"></script>
+      <script src="assets/javascripts/views/partials/toolbar.js"></script>
+      <script src="assets/javascripts/views/partials/stop_detail.js"></script>
+      <script src="assets/javascripts/views/partials/map_preview.js"></script>
+      <script src="assets/javascripts/views/partials/search_results.js"></script>
+      <script src="assets/javascripts/views/partials/table.js"></script>
+      
+      <script src="assets/javascripts/views/realtime.js"></script>
+      
+      <script src="assets/javascripts/views/sidebar.js"></script>
+      <script src="assets/javascripts/views/right_nav.js"></script>
+      <script src="assets/javascripts/views/filter.js"></script>
+      <script src="assets/javascripts/views/favorite.js"></script>
+      <script src="assets/javascripts/views/ambiguity.js"></script>
+      <script src="assets/javascripts/views/login.js"></script>
+      
+      <script src="assets/javascripts/views/stop_preview.js"></script>
+      
+      <script src="assets/javascripts/views/cached_addresses.js"></script>
+      <script src="assets/javascripts/views/car2go_reg.js"></script>
+      <script src="assets/javascripts/views/statusbar.js"></script>
+      <script src="assets/javascripts/views/rideshares.js"></script>
+      <script src="assets/javascripts/views/route_results.js"></script>
+      <script src="assets/javascripts/views/destination_location.js"></script>
+      
+      <!-- Overlays -->
+      <script src="assets/javascripts/views/overlays/alert_overlay.js"></script>
+      <script src="assets/javascripts/views/overlays/checkin_overlay.js"></script>
+
+      <!-- Alerts -->
+      <script src="assets/javascripts/views/partials/alerts/geolocation_alert.js"></script>
+      
+      <!-- Pages -->
+      <script src="assets/javascripts/views/pages/index.js"></script>
+      <script src="assets/javascripts/views/pages/map.js"></script>
+
+      <script src="assets/javascripts/views/pages/trips/overview.js"></script>
+      <script src="assets/javascripts/views/pages/trips/log.js"></script>
+
+      <script src="assets/javascripts/views/pages/stop.js"></script>
+      <script src="assets/javascripts/views/pages/fav.js"></script>
+      <script src="assets/javascripts/views/pages/me.js"></script>
+      <script src="assets/javascripts/views/pages/search.js"></script>
+      
+      <script src="assets/javascripts/views/pages/me/sign_in.js"></script>
+      <script src="assets/javascripts/views/pages/me/sign_up.js"></script>
+      <script src="assets/javascripts/views/pages/me/sign_out.js"></script>
+      <script src="assets/javascripts/views/pages/me/forgot_password.js"></script>
+
+      <script src="assets/javascripts/views/pages/help.js"></script>
+      <script src="assets/javascripts/views/pages/notes.js"></script>
+      <script src="assets/javascripts/views/pages/legal.js"></script>
+      <script src="assets/javascripts/views/pages/route.js"></script>
+      <script src="assets/javascripts/views/pages/alert.js"></script>
+      <script src="assets/javascripts/views/pages/about.js"></script>
+      <script src="assets/javascripts/views/pages/news.js"></script>
+      <script src="assets/javascripts/views/pages/mobile_apps.js"></script>
+
+      <!-- Controller -->
+      <script src="assets/javascripts/controllers/controller.js"></script>
+
+      <!-- Layouts -->
+      <script src="assets/javascripts/layouts/layouts.js"></script>
+
+      <!-- Routes -->
+      <script src="assets/javascripts/routers/routes.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
