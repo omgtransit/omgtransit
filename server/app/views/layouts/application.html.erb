@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta http-equiv="Content-Language" content="en">
+  <meta name="keywords" content="metro transit schedule,real time bus schedule,real time bus tracking,minneapolis bus schedule,st paul bus schedule,twin cities bus schedule,bus arrival times,light rail arrival times,omg transit,omgtransit" />
+
+  <meta name="google-site-verification" content="hLSseO40xIM9Z4SJKlR0Qm2zM7VSqeTcGTchTTkLLic" />
+
+  <meta property="og:image" content="http://omgtransit.com/assets/logo-med.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/logo57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/logo72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/logo114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/logo144.png" />
+
+<% if @stop.nil? %>
+  <title>omgtransit.com - Real-time bus schedules and transit information </title>
+  <meta name="description" content="omgtransit.com provides real-time bus schedules and transit information for the Minneapolis/St. Paul area" />
+  <meta property="og:title" content="omgtransit.com - Real-time bus schedules and transit information" />
+  <meta property="og:description" content="omgtransit.com provides real-time bus schedules and transit information for the Minneapolis/St. Paul area" />
+  <meta property="og:url" content="http://omgtransit.com" />
+<% else %>
+  <title><%= @stop.stop_name %> real-time bus schedules and transit information - omgtransit.com</title>
+  <meta name="description" content="Real-time bus schedules and transit information for <%= @stop.stop_name %> in Minneapolis/St. Paul" />
+  <meta property="og:title" content="<%= @stop.stop_name %> real-time bus schedules and transit information - omgtransit.com" />
+  <meta property="og:description" content="Real-time bus schedules and transit information for <%= @stop.stop_name %> in Minneapolis/St. Paul" />
+  <meta property="og:url" content="http://omgtransit.com/stop/<%= @stop.stop_id %>" />
+<% end %>
+
+  <meta name="viewport" content="width=device-width" />
+  <%= csrf_meta_tags %>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+</head>
+<body style="text-align: center;
+display: table;
+background: #162d3d;margin: 0 auto;">
+
+  <div class="app-container container" style="width:400px;">
+    <img src="/assets/images/omg-splash-logo.jpg" class="splash">
+    <%= yield %>
+  </div>
+  <%= yield :javascript %>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41367617-3', 'omgtransit.com'); // Updated 9/22
+  ga('send', 'pageview');
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41367617-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>

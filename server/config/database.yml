@@ -1,0 +1,9 @@
+<%
+  require 'bcdatabase'
+  bcdb = Bcdatabase.load
+%>
+
+<%= bcdb.development :omgtransit, :development %>
+<%= bcdb.test        :omgtransit, :test        %>
+<%= bcdb.production  :omgtransit, :production  %>
+<%= bcdb.onlinedev   :omgtransit, :onlinedev   %>
