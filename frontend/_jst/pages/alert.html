@@ -1,0 +1,13 @@
+<% if ( Omg.user.signedIn ) { %>
+  <h3>Alerts</h3>
+  <div id="table-results"></div>
+<% } else { %>
+  <div class="center">
+    <h3>Alerts</h3>
+    <p class="center">You need to be signed in to add alerts.</p>
+
+    <br>
+    <a href="#/me/sign_in" class="btn btn-primary btn-red">Sign In</a><br><br>
+    <a href="#/me/sign_up" class="signup">Not a member? Sign up.</a>
+  </div>
+<% } %>

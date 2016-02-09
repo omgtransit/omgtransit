@@ -1,0 +1,18 @@
+<div class="bus">
+  <table class="table stop-table" cellpadding="0" cellspacing="5">
+    <tbody>
+      <% _.each(models, function(item, index) { %> 
+        <tr class="route-item <%= item.priority %>" data-route="<%= item.route %>">
+          <td width="25%" nowrap class="route-number">
+            <i class="<%= item.direction %>"></i><%= item.route %><br>
+            <p class="desc"><%= item.description %></p>
+          </td>
+          <td class="time">
+            <i><%= item.TimeText %></i>
+              &nbsp;<a href="#" class="btn-alert" data-index="<%= index %>"><i class="icon-omg-alerts"></i></a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

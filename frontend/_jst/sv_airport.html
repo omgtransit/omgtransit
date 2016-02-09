@@ -1,0 +1,31 @@
+<%
+  _.each(models, function(obj){
+    obj.sdesc=obj.Description;
+    if(obj.sdesc && obj.sdesc.length>20 && matchMedia('only screen and (max-width: 480px)').matches)
+      obj.sdesc=obj.Description.substr(0,20)+" &hellip;";
+  });
+%>
+<div class="bus">
+  <table class="table stop-table">
+    <tbody>
+      <% _.each(models, function(item, index) { %> 
+        <tr class="route-item" data-route="<%= item.Route %>">
+          <td class="prio">
+            <div class="pull-left priority <%= item.priority %>">
+            </div>
+          </td>
+          <td width="25%" nowrap>
+            <i class="<%= item.direction %>"></i> <%= item.Route %>
+          </td>
+          <td class="desc"><%= item.dest %></td>
+          <td class="time">
+            <i class="t<%= item.priority %>"><%= item.StopText %></i>
+            <% if( Push.enabled() ) { %>
+              &nbsp;<a href="#" class="btn-alert" data-index="<%= index %>"><i class="icon-bell"></i></a>
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

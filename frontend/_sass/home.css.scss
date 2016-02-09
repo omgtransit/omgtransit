@@ -1,0 +1,1933 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "colors.css.scss";
+
+$right_nav_width:     180px;
+$sidebar_width:       260px;
+$right_nav_2nd_width: 180px;
+
+$font_regular:   'OpenSansRegular', Helvetica, sans-serif;
+$font_semi_bold: 'OpenSansSemibold', Helvetica, sans-serif;
+$font_light:     'OpenSansLight', Helvetica, sans-serif;
+
+@import "vendor/pull-to-refresh.css.scss";
+
+@import "components/base.css.scss";
+@import "components/animations.css.scss";
+@import "components/navbar.css.scss";
+@import "components/toolbar.css.scss";
+@import "components/search.css.scss";
+@import "components/map_preview.css.scss";
+
+@import "pages/list.css.scss";
+@import "pages/me.css.scss";
+@import "pages/trips.css.scss";
+@import "pages/trip-log.css.scss";
+@import "pages/map.css.scss";
+@import "pages/filter.css.scss";
+
+@import "transit_sources/car2go.css.scss";
+@import "transit_sources/zipcar.css.scss";
+@import "transit_sources/uber.css.scss";
+@import "transit_sources/sidecar.css.scss";
+@import "transit_sources/hailo.css.scss";
+
+
+.layout {
+  height:     100%;
+  min-height: 100%;
+}
+
+.omg-icon {
+  width:      101px;
+  height:     24px;
+  margin-top: 13px;
+}
+
+.label {
+  font-size:     10px;
+  border-radius: 0;
+}
+
+.btn-red {
+  color: white;
+  width: 100%;
+  border-radius: 0;
+  background: $bg_red;
+  font-size: 16px;
+  padding: 15px 0px;
+  border-style: none;
+  max-width: 300px;
+
+  &:hover {
+    background: $light_blue;
+  }
+}
+
+.btn-secondary {
+  background: #ddd;
+  border: none;
+  font-size: 16px;
+  padding: 15px 0px;
+  width: 100%;
+}
+
+.blue {
+  color: #478fca!important;
+}
+.center {
+  text-align: center;
+}
+
+.stop-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: $dark_grey;
+}
+
+.geolocate-alert {
+  color: white;
+  background: $light_blue;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  i {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .retrieving {
+    margin: 30px 0;
+    i {
+      margin-bottom: 20px;
+    }
+  }
+
+  .geo-info {
+    margin: 0 0 30px 0;
+  }
+  .geo-message {
+    margin: 20px 0 10px 0;
+  }
+
+  hr {
+    border-top: 1px dotted white;
+    border-bottom: none;
+  }
+}
+
+.stopbutton {
+  display: block;
+  text-align: left;
+  text-shadow: none;
+  background: $white;
+  border-radius: 0;
+  border: none;
+  position: relative;
+  text-decoration: none;
+  color: $dark_grey;
+  height: 63px;
+  margin: 5px;
+
+  .stop-info {
+    // width:    85%;
+    position: absolute;
+    left: 35px;
+    top: 10px;
+    right: 50px;
+  }
+  // .stop-name {
+  //   position:    absolute;
+  // }
+  .stop-icon {
+    position:   absolute;
+    left:       10px;
+    top:        20px;
+    text-align: center;
+  }
+  .distance-label { //TODO(Richard): We can probably eliminate this because we don't display distance any more
+    position:   absolute;
+    left:       5px;
+    width:      25px;
+    height:     10px;
+    font-size:  10px;
+    top:        35px;
+    text-align: center;
+    color:      $dark_grey;
+  }
+  .real-time {
+    height:   21px;
+    overflow: hidden;
+    position: absolute;
+    top:      23px;
+    width:    100%;
+  }
+
+  .icon-chevron-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px 0;
+    padding: 13px;
+  }
+}
+
+.stopbutton.car2go {
+  a { color: #fff; }
+}
+
+.stopbutton.zipcar {
+  a { color: #fff; }
+}
+
+.routebutton .chevron-right, .stopbutton .chevron-right, .stop-info .chevron-right {
+  position:    absolute;
+  right:       10px;
+  top:         2px;
+  padding-top: 5px;
+}
+
+.routebutton {
+  display:               block;
+  width:                 100%;
+  text-align:            left;
+  text-shadow:           none;
+  background:            $white;
+  border-radius:         0;
+  -webkit-border-radius: 0 !important;
+  position:              relative;
+  text-decoration:       none;
+  height:                63px;
+  border:                1px solid #ccc;
+  color:                 $dark_grey;
+  .route-name {
+    position: absolute;
+    left:     85px;
+    top:      5px;
+    color:    $dark_grey;
+  }
+  .stop-name {
+    position:  absolute;
+    left:      85px;
+    top:       17px;
+    font-size: 10px;
+  }
+  .route-number {
+    position:       absolute;
+    font-family:    $font_semi_bold;
+    top:            15px;
+    font-size:      30px;
+    text-align:     center;
+    width:          80px;
+    height:         30px;
+    overflow:       hidden;
+    vertical-align: bottom;
+    white-space:    nowrap;
+  }
+  .direction {
+    font-size: 20px;
+  }
+  .distance-label {
+    position:    absolute;
+    font-family: $font_semi_bold;
+    top:         40px;
+    width:       80px;
+    text-align:  center;
+    font-size:   10px;
+  }
+  .real-time {
+    height:        21px;
+    overflow:      hidden;
+    position:      absolute;
+    top:           35px;
+    left:          85px;
+    width:         100%;
+    padding-right: 120px;
+  }
+  .route-chip {
+    color: $white;
+  }
+}
+
+.routebutton:hover {
+  background-color: #e6e6e6;
+}
+
+.list-notice {
+  h4 {
+    padding-bottom: 3px;
+    margin-bottom: 7px;
+  }
+
+  text-align:  center;
+  background:  $light_blue;
+  color:       $white;
+  padding:     10px 30px;
+
+  a {
+    color: $dark_blue;
+  }
+}
+
+.overlay {
+  position:     fixed;
+  width:        100%;
+  height:       100%;
+  top:          0;
+  left:         0;
+  z-index:      1059;
+  color:        $white;
+  background:   rgba(22,45,61,0.9);
+  padding:      0 5px;
+  //background: rgba(239,80,46,0.9);
+
+  nav {
+    text-align:        center;
+    position:          relative;
+    top:               50%;
+    height:            60%;
+    -webkit-transform: translateY(-50%);
+    transform:         translateY(-50%);
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0 0 20px 0;
+  }
+
+  .select-lg {
+    width: 200px;
+    color: #000; 
+    margin: 0 0 15px 0; 
+    height: 50px;
+    background: transparent;
+    color: white;
+  }
+
+  .overlay-close {
+    font-size:       30px;
+    position:        absolute;
+    top:             10px;
+    right:           15px;
+    text-decoration: none;
+  }
+
+  .flatbtn {
+    @include transition-property(background-color);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-in-out);
+    display:          block;
+    width:            100%;
+    padding:          10px 10px 5px 15px;
+    text-align:       left;
+    text-shadow:      none;
+    border-radius:    10px;
+    min-height:       1.5em;
+    color:            white;
+    background-color: #1F5479; //TODO(Richard): Use a colour variable for this
+    margin-bottom:    5px;
+  }
+
+  .flatbtn.bgred {
+    background-color: $bg_red;
+  }
+
+  .flatbtn:hover {
+    background-color:$light_blue;
+  }
+
+  .btn-set-alert {
+    margin-top: 15px;
+  }
+
+  .alert-content { /*TODO(Richard): This should be separated out of the overlay so that the overlay is general*/
+    input[type=checkbox] {
+      margin: 0;
+    }
+    .alert-day-list {
+      margin: 10px 0 0 5px;
+    }
+    .alert-day {
+      margin-right: 7px;
+    }
+  }
+}
+
+.overlay-contentscale {
+  visibility:         hidden;
+  -webkit-transform:  translateY(100%);
+  transform:          translateY(100%);
+  -webkit-transition: -webkit-transform 0.3s, visibility 0s 0.3s;
+  transition:         transform 0.3s, visibility 0s 0.3s;
+}
+
+.overlay-contentscale.open {
+  visibility:         visible;
+  -webkit-transform:  translateY(0%);
+  transform:          translateY(0%);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition:         transform 0.3s;
+}
+
+.overlay-alert {
+  h1 {
+    margin: 10px 0 5px 0;
+  }
+
+  #recurring {
+    margin: 0;
+  }
+
+  #alert-time {
+    height:      40px;
+    text-align:  center;
+    font-size:   19px;
+    background:  none;
+    color:       $white;
+  }
+  .days {
+    width: 220px;
+    margin: 10px auto 0 auto;
+  }
+  .day {
+    margin-right: 8px;
+  }
+}
+
+#car2goreg {
+  nav {
+    top: 35%;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  input[type="text"], input[type="password"] {
+    padding: 20px 11px;
+  }
+  #submit-car2goreg {
+    background: #009fe4;
+  }
+}
+
+#messages {
+  position:       fixed;
+  width:          100%;
+  height:         100%;
+  top:            70%;
+  left:           0;
+  z-index:        9999;
+  padding:        5px 10%;
+  display: none;
+
+  .message {
+    position: relative;
+    width:         100%;
+    margin-bottom: 5px;
+    background:    rgba(22,45,61,0.9);
+    border:        2px solid $light_blue;
+    border-radius: 10px;
+    text-align:    center;
+    font-weight:   bold;
+
+    .message-dismiss {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+      cursor: pointer;
+    }
+  }
+
+  .message.success {
+    color:$white;
+  }
+
+  .message.error {
+    padding: 10px;
+    background: $bg_red;
+    border: none;
+    color:$white;
+  }
+}
+
+#thinkingbox {
+  position:      fixed;
+  width:         60px;
+  height:        60px;
+  left:          50%;
+  margin-left:   -30px;
+  top:           40%;
+  background: #fff;
+  box-shadow: 0 0 3px 0 #777;
+  border-radius: 10px;
+  text-align:    center;
+  display:       none;
+  z-index:       10000;
+
+  img {
+    margin-top: 15px;
+    width:      30px;
+    height:     30px;
+  }
+}
+
+.thinking-spinner {
+  opacity:           .7;
+  -webkit-animation: rotate 1s infinite steps(12);
+  -moz-animation:    rotate 1s infinite steps(12);
+  -ms-animation:     rotate 1s infinite steps(12);
+  -o-animation:      rotate 1s infinite steps(12);
+  animation:         rotate 1s infinite steps(12); 
+  width:             32px;
+  height:            32px; 
+}
+
+/* =====================================
+    VIEWs
+========================================*/
+
+#view-legal {
+  font-size: 120%;
+  max-width: 450px;
+  width:     100%;
+  padding:   0 5px;
+  margin:    0 auto;
+}
+
+#view-notes {
+  padding:     5px;
+  
+  h1,h2{font-family:$font_semi_bold;}
+}
+
+#view-help  {
+  text-align: center;
+  font-size:  120%;
+  margin:     0 auto;
+  max-width:  450px;
+  padding:    0 5px;
+
+  h3 {
+    font-family: $font_semi_bold;
+    margin-top:1.5em;
+  }
+
+  table.stoptypes{
+    margin:     0 auto;
+    font-size:  17px;
+    text-align: left;
+
+    td:nth-child(3) {
+      padding-left: 2em;
+    }
+
+    img {
+      width:  24px;
+      height: 39px;
+      margin-right:5px;
+    }
+  }
+}
+
+#view-release {
+  h1, h2, h3 {
+    text-align:  left;
+    font-family: $font_semi_bold;
+  }
+}
+
+.btn-group {
+  white-space: normal;
+}
+
+.btn-address {
+  margin-bottom: 5px;
+}
+
+.modal-header h3 {
+  font-weight: normal;
+}
+
+// .label-info {
+//   background-color:#000080;
+// }
+
+.footer {
+  margin-top:1em;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* =====================================
+    About Page
+========================================*/
+#view-help h3 {margin-top:1em}
+
+#view-about{
+  width:100%;
+  max-width:500px;
+  text-align:center;
+  margin:0 auto 100px auto;
+
+  h1 {
+    font-weight:bold;
+    font-size:14pt;
+    text-align:center;
+    font-style:normal;
+  }
+
+  .about {
+    p {
+      font-size: 14pt;
+      padding: 7px;
+      color:$bg_red;
+    }
+  }
+
+  div.team {
+    background:$grey;
+    font-style:italic;
+    text-align:left;
+    div {
+      text-align:center;
+      display:inline-block;
+      width:45%;
+      margin-left:3.2%;
+      margin-bottom:2em;
+      img {
+        width:100%;
+        border-radius:50%;
+        margin-bottom:0.75em;
+      }
+    }
+  }
+
+  div.awards {
+    font-size:13pt;
+  }
+
+  div.news {
+    background:$grey;
+  }
+}
+
+/*=================================
+MAP VIEW
+===================================*/
+
+@media (max-width: 767px) {
+  .nonmobile{display:none;}
+  .mobile{display:block;}
+}
+
+@media (min-width: 768px) {
+  .nonmobile {display:block;}
+  .mobile{display:none;}
+  .stopbutton:hover {
+    background-color: #e6e6e6;
+  }
+}
+
+#map-canvas {
+  position: absolute;
+  overflow: hidden;
+  //position: fixed !important;
+  left:     0 !important;
+  right:    0;
+  top:      0px !important;
+  bottom:   0;
+  width:    100% !important;
+  height: 100%;
+}
+
+.you-are-here {
+  margin: -8px 0 0 -8px;
+}
+
+.btn-current-location {
+  cursor:        pointer;
+  position:      fixed;
+  right:         5px;
+  top:           22px;
+  z-index: 1058;
+  width:         45px;
+  height:        45px;
+  text-align:    center;
+  padding:       14px 15px;
+  border-radius: 50%;
+  background:    $white;
+  box-shadow: 0 0 2px 0 #777;
+
+  i {
+    font-size: 18px;
+    color: $dark_grey;
+  }
+}
+
+.btn-location-active {
+  // -webkit-animation: pulsate 1s infinite alternate;
+  // -moz-animation: pulsate 1s infinite alternate;
+  // -animation: pulsate 1s infinite alternate;
+  background: $dark_grey;
+  i {
+    color: $white;
+  }
+}
+
+// @-webkit-keyframes pulsate {
+//   from { box-shadow: 0 0 8px #547dbf; }
+//   to { box-shadow: 0 0 30px #547dbf; }
+// }
+// @-moz-keyframes pulsate {
+//   from { box-shadow: 0 0 10px #121212; }
+//   to { box-shadow: 0 0 30px #547dbf; }
+// }
+// @keyframes pulsate {
+//   from { box-shadow: 0 0 10px #121212; }
+//   to { box-shadow: 0 0 30px #547dbf; }
+// }
+
+.btn-refresh-container {
+  padding: 6px 6px 15px 15px;
+  cursor: pointer;
+  position: fixed;
+  right: 0;
+  top: 14px;
+  z-index: 1058;
+}
+
+.btn-refresh-active {
+  .btn-refresh {
+    -webkit-animation: rotate 1.5s infinite steps(24);
+    -moz-animation:    rotate 1.5s infinite steps(24);
+    -ms-animation:     rotate 1.5s infinite steps(24);
+    -o-animation:      rotate 1.5s infinite steps(24);
+    animation:         rotate 1.5s infinite steps(24);
+  }
+}
+
+.btn-refresh {
+  width:         45px;
+  height:        45px;
+  text-align:    center;
+  padding:       13px 10px;
+  border-radius: 50%;
+  background: $dark_grey;
+  box-shadow: 0 0 2px 0 #777;
+
+  i {
+    font-size: 16px;
+    color: $white;
+  }
+}
+
+#maptt.expanded {
+  bottom: 0;
+  height: 60%;
+}
+
+.view-map {
+  position:relative;
+  height: 100%;
+  min-height: 100%;
+
+  /*.middlemarker {
+    position:    fixed;
+    height:      40px;
+    width:       12px;
+    margin-top:  -40px;
+    margin-left: -6px;
+    left:        50%;
+    top:         50%;
+  }*/
+}
+
+
+
+.infocontents {
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  overflow:hide;
+}
+
+.infocontents a {
+  font-weight:bold;
+}
+
+.infocontents .route-chip {
+  display:inline-block;
+  float:none;
+}
+
+.dir_label {
+  background-color:#4E4E4E;
+}
+
+.route-chip {
+/*  cursor: pointer;*/
+  display:        block;
+  height:         20px;
+  float:          left;
+  letter-spacing: 0px;
+  border-radius:  0;
+  font-size:      10px;
+  padding:        3px 4px;
+  margin:         0 3px 3px 0;
+  text-shadow:    none;
+  font-weight:    bold;
+  
+  .icon-direction {
+    font-size: 10px;
+  }
+
+  .eta {
+    //font-style: italic;
+  }
+}
+
+.p0  {background-color:#b94a48}
+.p5  {background-color:#f89406}
+.p12 {background-color:$chip_grey}
+.p20 {background-color:$chip_grey}
+.pnd {background-color:black;color:$white}
+
+.tp0  {color:#b94a48}
+.tp5  {color:#f89406}
+.tp12 {color:#468847}
+.tp20 {color:$white}
+
+.zipcar-chip {
+  background-color: #468847;
+}
+
+.hourcar-chip {
+  background-color: #e59905;
+}
+
+.car2go-chip {
+  background-color: #3a87ad;
+}
+
+.real-time.bikeshare_station .route-chip {
+  background-color: #9CC100;
+}
+
+.stop-table {
+  margin-bottom: 0;
+  .p12 {background-color:$white}
+  .p20 {background-color:$white}
+
+  .p0 td, .p5 td, .p0 a, .p5 a {
+    color: $white;
+  }
+}
+
+#maptt {
+  .hud-chips {
+    width: 90%;
+    line-height: 23px;
+  }
+}
+
+.marker-header {
+  font-family: $font_semi_bold !important;
+  font-size: 1.0em;
+}
+
+.map-route-hud {
+  font-weight: normal;
+  text-align: left;
+  height: 100%;
+  // background: rgba(0, 0, 0, 0.6);
+  padding: 0.3em;
+  color: #fff;
+
+  h4 {
+    margin:      0;
+    color:       #fff;
+    font-size:   1.2em;
+    font-weight: normal;
+  }
+
+  .route-chip {
+    padding: 0 5px 0 5px;
+    display: inline;
+    float:   none;
+  }
+
+  .hud-descr {
+    margin-left: 10px;
+  }
+
+  .hud-stops-descr {
+    .btn {
+      margin: 5px 5px 0 7px;
+    }
+  }
+}
+
+.update-location-descr {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 8pt;
+  line-height: 10pt;
+}
+
+#searchbox {
+  margin-top:8px;
+}
+
+#searchbox input {
+  width:150px;
+}
+
+.home-container {
+  position: relative;
+}
+
+#directions-found {
+  display:none;
+}
+
+.directions-header {
+  color: #666;
+  margin-top: 5px;
+}
+
+#directions-found-head {
+  margin-right: 10px;
+  display:none;
+
+  a {
+    font-size:150%;
+  }
+
+  #flip-directions-right {
+    position:absolute;
+    right:25px;
+  }
+}
+
+.loc-arrow {
+  color: #08c;
+  height: 32px !important;
+  width: 32px !important;
+}
+
+#view-route {
+
+}
+
+.route-box {
+  margin:    10px 0;
+  padding:   10px;
+  width:     100%;
+  font-size: 14px;
+  
+  border-radius: 4px;
+  top:           67px;
+  right:         3px;
+  z-index:       100;
+
+  .route-input {
+    input {
+      padding:   15px 5px;
+      width:     80%;
+      max-width: 400px;
+    }
+  }
+
+  .btn-route-back {
+    margin-right: 27px;
+  }
+
+  .btn-hide-route {
+    //display:     none;
+    position:      absolute;
+    top:           10px;
+    right:         5px;
+    border-radius: 5px;
+    height:        30px;
+  }
+
+}
+
+.directions-leg:before {
+  content:          "";
+  display:          block;
+  position:         absolute;
+  left:             26px;
+  top:              0;
+  bottom:           0;
+  border:           1px solid #e2e3e7;
+  background-color: #e7eaef;
+  width:            4px;
+  border-width:     0 1px;
+}
+
+.directions-box {
+  font-size: 14px;
+  //padding: 10px 0px 10px 15px;
+  width:     100%;
+  position:  relative;
+  display:   none;
+
+  h4 {
+    border-bottom:  1px solid #ccc;
+    width:          100%;
+    padding-bottom: 10px;
+  }
+}
+
+.totals-container {
+  display: table;   /* Allow the centering to work */
+  margin: 0 auto;
+}
+
+.totals-step {
+  text-align: center;
+  margin-right: 15px;
+}
+
+.widget-box {
+  border-left:      3px solid #dae1e5;
+  margin:           0;
+  position:         relative;
+  max-width:        none;
+  border-bottom:    0;
+  margin-left:      55px;
+  background-color: #f2f6f9;
+  color:            #595c66;
+  padding:          7px;
+}
+
+.timeline-info {
+  float:      left;
+  width:      45px;
+  text-align: center;
+  position:   relative;
+}
+
+.timeline-icon {
+  border-radius: 100%;
+  display:       inline-block;
+  font-size:     16px;
+  border:        3px solid #FFF!important;
+  height:        40px;
+  line-height:   40px;
+  width:         40px;
+}
+
+.timeline-directions-walk-icon {
+  background-color: #2283c5!important;
+}
+
+.timeline-directions-transit-icon {
+  background-color: #87b87f!important;
+}
+
+.directions-leg {
+  position: relative;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+  // -webkit-overflow-scrolling: touch;
+  // height: 300px;
+}
+
+.directions-step {
+  cursor:           pointer;
+  margin-top:       5px;
+  margin-right:     5px;
+  padding:          5px;
+  // background:    #fff;
+  // border-bottom: 1px solid #ccc;
+}
+
+.directions-end {
+  margin-right: 5px;
+  padding: 5px;
+  display: block;
+  // white-space: normal;
+  // text-overflow: ellipsis;
+  background: #3a87ad;
+}
+
+.directions-travel-mode-icon {
+  background:      transparent url('../images/sprite-1x.png') no-repeat 0 0;
+  background-size: 120px 15px;
+  width:           15px;
+  height:          15px;
+  vertical-align:  middle;
+}
+
+.directions-travel-mode-icon-blue {
+  background: transparent url('../images/sprite-1x-blue.png') no-repeat 0 0;
+}
+
+.directions-travel-mode-icon-green {
+  background: transparent url('../images/sprite-1x-green.png') no-repeat 0 0;
+}
+
+.directions-travel-mode-icon-white {
+  background: transparent url('../images/sprite-1x-white.png') no-repeat 0 0;
+}
+
+.directions-plane-icon {
+  background-position: -5px 0;
+}
+
+.directions-walk-icon {
+  background-position: -24px 0;
+}
+
+.directions-driving-icon {
+  background-position: -48px 0;
+}
+
+.directions-bike-icon {
+  background-position: -72px 0;
+}
+
+.directions-transit-icon {
+  background-position: -96px 0;
+}
+
+
+.star {
+  font-size: 18px;
+  color: grey;
+}
+
+.star-yellow {
+  color: $yellow_star;
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
+}
+
+.datalist {
+  list-style: none;
+  display:    none;
+  background: white;
+  box-shadow: 0 2px 2px #999;
+  position:   absolute;
+  z-index:    9999;
+  left:       0;
+  top:        0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.datalist:empty {
+  display: none !important;
+}
+.datalist li {
+  padding: 3px;
+  font: 13px "Lucida Grande", Sans-Serif;
+}
+.datalist li.active {
+  background: #3875d7;
+  color: white;
+}
+
+.navbar-secondary {
+  position:   fixed;
+  z-index:    10;
+  top:        42px;
+  background: $bg_red;
+  height:     65px;
+  width:      100%;
+  color:      #b3b3b3;
+
+  .container {
+    margin:     25px auto;
+    text-align: center;
+  }
+
+  a {
+    text-align: center;
+    padding:    15px 30px 5px 30px;
+    color:      $nav_red;
+    border:     2px solid $nav_red;
+  }
+
+  @media (max-width: 767px) {
+    a {
+      width:80px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    a {width:40px;}
+  }
+
+  a:first-child {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+  }
+
+  a:last-child {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+  }
+
+  a.active {
+    color:      $bg_red;
+    background: $nav_red;
+  }
+
+  a:hover {
+    color:           $bg_red;
+    background:      $nav_red;
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 1.7em;
+  }
+
+  .arrow-down {
+    position:     absolute;
+    top:          100%;
+    left:         50%;
+    margin-left:  -7px;
+    content:      '';
+    width:        0;
+    height:       0;
+    border-top:   solid 7px $bg_red;
+    border-left:  solid 7px transparent;
+    border-right: solid 7px transparent;
+  }
+}
+
+.views {
+  display: none;
+}
+
+/* =========================================================
+Sidebar
+==============================================================*/
+
+.sidebar-container {
+  //-webkit-backface-visibility: hidden;
+  
+  position:          fixed;
+  z-index:           1050;
+  top:               0;
+  left:              0;
+  bottom:            0;
+  -webkit-transform: translate(-260px, 0px);
+  -moz-transform:    translate(-260px, 0px);
+  transform:         translate(-260px, 0px);
+  width:             $sidebar_width;
+  background: #fff;
+
+  .disabled {
+    color: #666;
+  }
+}
+
+.sidebar {
+  height: 100%;
+
+  /* Initially Hidden */
+  width:            $sidebar_width;
+  background-color: $dark_blue;
+
+  // height: 100%;
+  // min-height: 100%;
+  .sidebar-content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+
+    padding-bottom: 110px;
+  }
+
+  form {
+    margin: 0;
+  }
+
+  .list-icon {
+    display:      inline-block;
+    width:        20px;
+    text-align:   center;
+    margin-right: 10px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  hr {
+    width:         87%;
+    margin:        10px 0 5px 15px;
+    border-top:    1px dotted $light_blue;
+    border-bottom: none;
+  }
+
+  li {
+    cursor:      pointer;
+    font-size:   16px;
+    line-height: 30px;
+    list-style:  none;
+    color:       $light_blue;
+
+    a {
+      padding:   7px 7px 7px 20px;
+      color:     $white;
+      display:   block;
+      width:     100%;
+      font-size: 18px;
+    }
+
+    a:hover {
+      color:           $white;
+      text-decoration: none;
+    }
+  }
+  p {
+    padding:    7px 0 7px 7px;
+    margin:     0;
+    color:      #e1e1e1;
+    background: #000;
+  }
+
+  .close-container {
+    width:       100%;
+    height:      50px;
+    background:  $menu_blue;
+    padding-top: 10px;
+    text-align:  center;
+    color:       $white;
+
+    .btn-hide-menu {
+      color:   $white;
+      padding: 6px 0 0 15px;
+    }
+
+    .user-name {
+      padding:   6px 0 0 13px;
+      font-size: 16px;
+    }
+  }
+
+  .list-header {
+    font-size:  16px;
+    text-align: center;
+    margin:     0 0 10px 0;
+    padding:    6px 0;
+    background: #69859c;
+
+    a.btn-hide-menu:hover {
+      text-decoration: none;
+    }
+
+    img {
+      padding:       5px 10px 5px 5px;
+      border-radius: 7px;
+    }
+  }
+
+  .settings-btn {
+    padding: 5px;
+
+    i {
+      font-size: 24px;
+    }
+  }
+
+
+  input[type=text]:focus, textarea:focus {
+    color:      $light_blue;
+    background: #264556;
+  }
+
+  .small-menu-items {
+    a {
+      font-size: 16px;
+    }
+  }
+}
+
+.sidebar-expanded {
+  pointer-events: auto;
+  
+  // .sidebar {
+  //    @include transform( translate( 0px, 0px) );
+  // } 
+}
+
+#right-nav {
+
+  .open {
+    right: 0px !important;
+  }
+  
+  .right-nav-container {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+
+    position:         fixed;
+    width:            $right_nav_width;
+    height:           100%;
+    top:              0;
+    right:            -$right_nav_width;
+    z-index:          1070;
+    min-height:       100%;
+    background-color: $dark_blue;
+
+    .second-level-menu {
+      position:         absolute;
+      width:            $right_nav_2nd_width;
+      top:              0;
+      left:             $right_nav_width;
+      height:           100%;
+      min-height:       100%;
+      background-color: $dark_blue;
+      color:            $white;
+
+      .header {
+        padding-left: 30px;
+        background:   $menu_blue;
+      }
+
+      .btn-hide-nav {
+        cursor: pointer;
+      }
+
+      a.signup {
+        color:           #98c1e3;
+        text-decoration: underline;
+        font-size:       14px;
+        padding:         0;
+        text-align:      center;
+      }
+      a {
+        text-align: center; 
+        padding:    12px 0;
+        width:      100%;
+        font-size:  14px;
+        margin:     0 auto;
+      }
+    }
+  }
+
+  h4 {
+    margin:    15px 0 10px 15px;
+    font-size: 14px;
+    color:     $white;
+  }
+
+  ul {
+    padding: 0;
+    margin:  0;
+  }
+
+  li {
+    div {
+      margin-right: 15px;
+    }
+
+    color:      $white;
+    list-style: none;
+    padding:    0;
+  }
+
+  a {
+    display:     block;
+    color:       $white;
+    width:       100%;
+    text-align:  left;
+    padding:     10px 0 10px 30px;
+    font-size:   16px;
+    font-weight: normal;
+
+    i {
+      padding-right: 10px;
+    }
+  }
+
+  .btn-filter {
+    color:      #fff;
+    padding:    10px 10px 10px 30px;
+  }
+
+  .filters {
+    li {
+      padding: 10px 0;
+    }
+  }
+}
+
+/* =========================================================
+Filter
+==============================================================*/
+
+#filter {
+
+  .filter-container {
+    padding: 30px;
+  }
+
+  button {
+    width:        100%;
+    text-align:   left;
+    padding: 7px 20px;
+
+    background:    none;
+    border-radius: 0;
+    box-shadow:    none;
+    border:        none;
+    outline: none !important;
+    color: $chip_grey;
+  }
+  button:focus {
+    outline: none !important;
+  }
+
+  button.active {
+    color: $white;
+    border-radius: 8px;
+    background: $menu_blue;
+  }
+
+  button:hover {
+    border-radius: 8px;
+    background: $menu_blue;
+  }
+
+  ul {
+    padding: 0;
+    margin:  0;
+  }
+
+  li {
+    div {
+      margin-right: 15px;
+    }
+
+    color:      #fff;
+    list-style: none;
+    padding:    7px 0;
+  }
+}
+
+.filters {
+  
+  button {
+    position:     relative;
+    color:        $white;
+    background:   none;
+    border:       none;
+    padding-left: 15px;
+  }
+  
+  button.active:before {
+    content:       "";
+    position:      absolute;
+    left:          -5px;
+    top:           10px;
+    width:         6px;
+    height:        6px;
+    background:    $light_blue;
+    border-radius: 50%;
+  }
+}
+
+/* =========================================================
+Navbar
+===========================================================*/
+
+input[type=text].sb-search-input {
+  width:         200px;
+  height:        35px;
+  margin:        3px;
+  padding:       7px;
+  background:    #264556;
+  border-radius: 7px;
+  border:        none;
+  color:         $light_blue;
+}
+
+input, select, textarea{
+  color: $light_blue;
+}
+
+
+ 
+input[type="search"].sb-search-input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+.sb-search-input::-webkit-input-placeholder {
+  color: #08c;
+}
+ 
+.sb-search-input:-moz-placeholder {
+  color: #08c;
+}
+ 
+.sb-search-input::-moz-placeholder {
+  color: #08c;
+}
+ 
+.sb-search-input:-ms-input-placeholder {
+  color: #08c;
+}
+
+.sb-icon-search {
+  display:    block;
+  width:      35px;
+  height:     35px;
+  top:        -3px;
+  right:      0;
+  position:   absolute;
+  text-align: center;
+  cursor:     pointer;
+  z-index:    15;
+}
+
+.sb-back {
+  text-align: center;
+  width:      30px;
+  display:    none;
+  position:   absolute;
+  top:        4px;
+  left:       10px;
+  z-index:    15;
+}
+
+#view-stop{
+  // Place all the styles related to the Stops controller here.
+  // They will automatically be included in application.css.
+  // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  table {
+    font-size:16pt;
+  }
+
+  span.desc {
+    font-size:60%;
+  }
+
+  #thestop {
+    font-family: $font_semi_bold;
+    font-size: 1.5em;
+  }
+
+  .stop-table {
+    th {
+      font-family: $font_semi_bold;
+      font-size: 1em;
+      background: #f5f7f7;
+    }
+    td {
+      color: #fff;
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  .route-list-map {
+    .stop-list {
+      display: none;
+    }
+
+    .current-route-stops {
+      height: 510px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+
+      .active {
+        background: #08c;
+        color: #fff;
+
+        a {
+          color: #fff;
+        }
+      }
+      td {
+        font-size: 12px;
+        padding: 4px;
+      }
+      
+    }
+  }
+
+  #yelp {
+    display: none;
+  }
+
+  .yelp-table {
+    border: 1px solid #ccc;
+    th {
+      font-family: $font_semi_bold;
+      font-size: 0.8em !important;
+      background: #f5f7f7;
+    }
+    td {
+      font-size: 0.8em;
+    }
+  }
+
+  .stop-header {
+    line-height:   20px;
+    padding:       5px 10px 5px 10px;
+    margin-bottom: 7px;
+    margin-top:    10px;
+
+    img {
+      vertical-align: bottom;
+    }
+  }
+
+  .stop-desc {
+    margin-left: 0.5em;
+    font-size:   90%;
+    font-style:  italic;
+  }
+
+
+  .routes-table {
+    font-size:     12px;
+    background:    #fff;
+    color:         #000;
+    border-radius: 7px;
+    
+    .active {
+      border-radius: 7px;
+      background:    #08c;
+      color:         #fff;
+    }
+  }
+
+  .detail-header-icon {
+    display:       inline-block;
+    border-radius: 100%;
+    width:         50px;
+    height:        50px;
+    position:      relative;
+  }
+
+  #alternate-template {
+    hr {
+      margin: 15px 0;
+    }
+
+    .info {
+      .span2 {
+        font-weight: bold;
+        color:       #009fe4;
+        width:       110px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+#statusbar-container {
+  display:       none;
+  margin-bottom: -50px;
+}
+
+#statusbar{
+//  position:    absolute;
+//  top:         50px;
+  position: relative;
+  width:       100%;
+  background:  $bg_red;
+  z-index:     1000;
+  text-align:  center;
+  height:      25px;
+  padding-top: 2px;
+  color:       $white;
+  margin-top:  50px;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  #statusbar-message {
+    font-weight: bold;
+    text-align:  center;
+    width:       100%;
+    position: absolute;
+    z-index: 18;
+  }
+
+  #statusbar-close-hitbox{
+    padding:  50px 20px 50px 30px;
+    top:      -20px;
+    position: absolute;
+    right:    -20px;
+  }
+
+  #statusbar-close {
+    display:   block;
+    font-size: 1.5em;
+    padding:   19px 0 0 0;
+    position:  absolute;
+    right:     20px;
+    top:       -18px;
+    z-index:   21;
+    color:     $white;
+  }
+}
+
+.loading {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#view-mobile-apps {
+  .foot {
+    padding: 30px 0 10px 0;
+    text-align: center;
+    background: #efefef;
+
+    li {
+      list-style: none;
+      display: inline;
+      font-size: 18px;
+    }
+    ul {
+      margin-bottom: 35px;
+    }
+    a {
+      font-family: 'OpenSansLight';
+      font-weight: 400;
+      color: #152d3d;
+      font-size: 18px;
+    }
+  }
+
+  .benefits {
+    ul {
+      width: 30%;
+      padding: 60px 0 70px 0;
+      margin: 0 15%;
+      
+      li {
+        list-style: none;
+        text-align: center;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .bg {
+
+    h3 {
+      padding: 3% 10%;
+      font-size: 54px;
+      font-family: 'OpenSansLight';
+      font-weight: 400;
+      line-height: 58px;
+      margin: 0;
+      color: #fff;
+    }
+
+    max-width: 100%;
+    height: 350px;
+    background: url('../images/mobile-apps-bg.jpg') transparent no-repeat;
+    background-size: 100% 100%;
+
+    .app-buttons {
+      padding: 0 10%;
+    }
+
+    .app-btn {
+      float: left;
+      width: 150px;
+      display: block;
+      padding: 7px;
+      background: #fff;
+      border-radius: 7px;
+    }
+  }
+  .iphone {
+    width: 291px;
+    height: 630px;
+    background: url('../images/iphone.png') no-repeat;
+    position: absolute;
+    top: 70px;
+    right: 50px;
+  }
+}
+
+@media (max-width: 980px) {
+  #view-mobile-apps {
+    .bg {
+      h3 {
+        font-size: 34px;
+        line-height: 38px;
+      }
+    }
+    .iphone {
+      width: 200px;
+      height: 400px;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+@media (max-width: 707px) {
+  #view-mobile-apps {
+    .iphone {
+      position: relative;
+      width: 212px;
+      height: 429px;
+      background-size: 100% 100%;
+      margin: 20px auto;
+      top: auto;
+      right: auto;
+    }
+    .bg {
+      width: 100%;
+      h3 {
+        font-size: 34px;
+        line-height: 38px;
+      }
+      .app-btn {
+        width: 250px;
+        text-align: center;
+      }
+    }
+    .benefits {
+      margin-top: 0;
+      ul {
+        width: 100%;
+        margin: 0;
+        padding: 0 0 30px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 674px) {
+  .btn-android {
+    margin: 40px 0 20px 0;
+  }
+}

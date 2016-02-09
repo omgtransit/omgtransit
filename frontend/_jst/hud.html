@@ -1,0 +1,47 @@
+<div class="stopbutton" data-stopid="<%= stop.id %>">
+  <div class="stop-icon"> <!--TODO(Richard): The pull-left is necessary below, but why?-->
+    <!--TODO(Richard): There should be a better way to do this icon thing-->
+    <% if ( isBikeStop(stop) ) { %>
+      <span class="pull-left directions-travel-mode-icon directions-bike-icon"></span>&nbsp;
+    <% } else if ( isAirport(stop) ) { %>
+      <span class="pull-left directions-travel-mode-icon directions-plane-icon"></span>&nbsp;
+    <% } else if ( isCar2GoStop(stop) ) { %>
+      <img src="assets/images/car.png" width="20">
+    <% } else if ( isZipcarStop(stop) ) { %>
+      <img src="assets/images/zipcar.jpg" width="20">
+    <% } else if ( isHourcarStop(stop) ) { %>
+      <span class="pull-left directions-travel-mode-icon directions-driving-icon"></span>&nbsp;
+    <% } else { %>
+      <span class="pull-left directions-travel-mode-icon directions-transit-icon"></span>&nbsp;
+    <% } %>
+  </div>
+
+  <div class="stop-info">
+    <div class="stop-name">
+      <% if ( isCar2GoStop(stop) ) { %>
+        car2go: <%= stop.stop_name.toUpperCase() %>
+      <% } else if (isZipcarStop(stop)) { %>
+        ZipCar: <%= stop.stop_name %>
+      <% } else if (isHourcarStop(stop)) { %>
+        HOURCAR: <%= stop.stop_name %>
+      <% } else { %>
+        <%= stop.stop_name %>
+      <% } %>
+    </div>
+
+
+    <div class="stop-chip-data real-time <%= stop.stop_type %>">
+      <% if( view.$el.find('span').length ) { %>
+        <div class="clearfix hud-chips"><%= view.$el.html() %></div>
+      <% } else { %>
+        <div class="label route-chip pnd">No Data</div>
+      <% } %>
+    </div>
+
+  </div>
+  <% if ( !isCar2GoStop(stop) && !isBikeStop(stop) && !isZipcarStop(stop) && !isHourcarStop(stop) ) { %>
+    <div id="makefav" title="Make this stop a favorite">
+      <i class="icon-star star"></i>
+    </div>
+  <% } %>
+</div>

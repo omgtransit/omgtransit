@@ -1,0 +1,15 @@
+<% _.each(models, function(item, index) { %>
+  <table style="float:left;margin-top:10px;margin-left:10px;">
+    <tr>
+      <td rowspan="6" style="width:100px"><img src="https://reserve.hourcar.org/<%= item.thumb_url %>"></td>
+      <td><strong><%= item.descr %></strong></td>
+    </tr>
+  </table>
+<% }) %>
+
+
+<div style="padding:20px 10px;clear:both;">
+  <h3>Join the HOURCAR revolution!</h3>
+  <p><b>HOURCAR is your very own set of wheels – with none of the costs and worries of ownership.</p>
+  <p style="text-align:center;font-size:130%;font-family:OpenSansSemiBold"><a href="http://www.hourcar.org/join" target="_blank" onClick="logEvent('Click', 'event', 'Outbound-Link', 'hourcar.org');">Join HOURCAR</a></p>
+</div>

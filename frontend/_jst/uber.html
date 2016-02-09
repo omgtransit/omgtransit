@@ -1,0 +1,9 @@
+<ul>
+<% for (var i=0, len=items.length; i < len; i++ ) { %>
+  <li class="uber-option" data-product-id="<%= items[i].product_id %>">
+    <%= items[i].display_name %>
+    <div class="minaway pull-right"><%= Math.floor( items[i].estimate / 60 ) %> min away<div>
+    <img src="assets/images/chevron-small.png" class="chevron-right">
+  </li>
+<% } %>
+</ul>

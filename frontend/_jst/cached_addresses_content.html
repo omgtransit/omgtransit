@@ -1,0 +1,7 @@
+<a href="#" class="flatbtn bgred" data-address="close">Go back</a>
+<br>
+<% for(var i in data) { %>
+  <a href="#" class="flatbtn" data-address="<%= data[i].address %>" data-lon="<%= data[i].lon %>" data-lat="<%= data[i].lat %>">
+    <%= data[i].address %>
+  </a>
+<% } %>

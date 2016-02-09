@@ -1,0 +1,19 @@
+<h3>Favorites</h3>
+<% if ( Omg.user.signedIn ) { %>
+  <div class="pull-right">
+    <div class="btn-refresh-container"><div class="btn-refresh"><i class="icon-refresh"></i></div></div>
+  </div>
+  <div class="fav-error-alert alert alert-danger hide">There was a problem loading your favorites.</div>
+  <div style="width:100%;text-align:center;margin-bottom:10px;" class="fav-loading hide">
+    Loading<br>
+    <img class="loadingimg" src="assets/images/horz_loading.gif">
+  </div>
+  <div id="table-results"></div>
+<% } else { %>
+  <div class="center">
+    <p>You need to be signed in to add favorite stops.</p>
+    <br>
+    <a href="#/me/sign_in" class="btn btn-primary btn-red">Sign In</a><br><br>
+    <a href="#/me/sign_up" class="signup">Not a member? Sign up.</a>
+  </div>
+<% } %>

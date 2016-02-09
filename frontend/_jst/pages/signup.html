@@ -1,0 +1,13 @@
+<h3>Sign Up</h3>
+<form action="#/me/sign_up" id="form-signup">
+  <div class="alert alert-danger signup-errors hide">One or more fields were missing.</div>  
+  <div><input type="text" id="user_first_name" name="user[first_name]" autofocus="true" placeholder="First Name"></div>
+  <div><input type="text" id="user_last_name" name="user[last_name]" placeholder="Last Name"></div>
+  <div><input type="text" id="user_email" name="user[email]" placeholder="Email"></div>
+  <div><input type="password" id="user_password" name="user[password]" placeholder="Password"></div>
+  <div><button class="btn btn-red btn-signup">Sign up</button></div>
+  <div class="or-login-text">OR</div>
+  <div class="social-login">
+    <a href="/users/auth/google_oauth2" class="btn-google-auth btn-red" id="google-signup"><i class="icon-google-plus" onclick="logEvent('Click', 'event', 'Account', 'Sign Up Google');"></i>&nbsp;&nbsp;Signup with Google</a>
+  </div>
+</form>

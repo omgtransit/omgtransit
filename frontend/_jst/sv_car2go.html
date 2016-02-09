@@ -1,0 +1,36 @@
+<% var model=models[0]; %>
+
+<div class="car2go">
+  <div style="background-color:#009fe4;color:white;margin-top:-10px">
+    <h4 style="padding-top:15px;text-align:center;font-weight:bold;"><%= stop.stop_street %></h4>
+    <table class="table centertd">
+      <tbody>
+        <tr style="font-size:30px">
+          <td><%= model.fuel %>%</td>
+          <td><% if (model.interior === 'GOOD') { %><i class="icon-thumbs-up"></i><% } else { %><i class="icon-thumbs-down"></i><% } %></td>
+          <td><% if (model.exterior === 'GOOD') { %><i class="icon-thumbs-up"></i><% } else { %><i class="icon-thumbs-down"></i><% } %></td>
+          <td><% if (model.engineType === 'CE') { %>Gas<% } else { %><%= model.engineType %><% } %></td>
+        </tr>
+        <tr>
+          <td>Fuel</td>
+          <td>Interior</td>
+          <td>Exterior</td>
+          <td>Engine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="padding:0px 44px;"><!--TODO(Richard): Hide this if we can see that the user already is registered for car2go-->
+    <p style="font-family:OpenSansSemiBold;font-weight:bold;font-size:20px">How does car2go work?</p>
+
+    <ol>
+      <li>One-way trips</li>
+      <li>Pay by the minute (gas &amp; insurance included)</li>
+      <li>Parking is free! (some restrictions apply)</li>
+      <li>Take any car</li>
+    </ol>
+    
+    <p style="font-family:OpenSansSemiBold;font-size: 20px;">Ready to <a href="https://www.car2go.com/en/minneapolis/" target="_blank" onClick="logEvent('Click', 'event', 'Outbound-Link', 'car2go.com');">sign up</a>?</p>
+  </div>
+</div>

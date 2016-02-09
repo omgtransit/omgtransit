@@ -1,0 +1,19 @@
+<h3>Sign In</h3>
+<form action="#/me/sign_in" method="post" id="form-signin">
+  <div class="alert alert-danger signin-error hide">Email or password was incorrect.</div>
+  
+  <input type="text" id="login_email" name="user[email]" placeholder="Email"><br>
+  <input type="password" id="login_password" name="user[password]" placeholder="Password">
+  
+  <div class="forgot clearfix">
+    <a href="#/me/forgot_password" class="forgot-link pull-right">Forgot Password</a>
+  </div>
+  
+  <button class="btn-red btn-signin">Sign In</button>
+
+  <div class="or-login-text">OR</div>
+  <a href="/users/auth/google_oauth2" class="btn-red btn-google-auth" id="google-login"><i class="icon-google-plus"></i>&nbsp;&nbsp;Login with Google</a>
+</form>
+
+<p><a href="#/me/sign_up" class="account-link">Not a member? Sign Up.</a></p>
+<p><a href="#/legal" class="show-legal">Terms &amp; Conditions</a></p>

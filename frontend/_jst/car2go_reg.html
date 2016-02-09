@@ -1,0 +1,20 @@
+<a href="#" class="overlay-close">×</a>
+<nav>
+<h1>Authorize car2go</h1>
+<p>In order to use this feature, we need permission to access your car2go account.</p>
+<p>Your username and password will be used only <b>once</b> and are <b>not stored</b>.</p>
+<p>They are used to generate a special authorization token which allows us to make reservations for <b>90 days</b> on your behalf.</p>
+<div id="car2go_up_block" style="text-align:center">
+
+  <form action="#" id="frm-car2go-reg">
+    <div><input type="text"     name="user[name]"     id="car2go_username" autofocus="true" placeholder="Username / Email"></div>
+    <div><input type="password" name="user[password]" id="car2go_password" placeholder="Password"></div>
+
+    <div><button class="btn btn-primary" id="submit-car2goreg">Authorize</button></div>
+  </form>
+</div>
+<div style="text-align:center;font-size:150%;display:none" id="car2go_succ_block">
+  <p><b>Success!</b> You can now make reservations on car2go!</p>
+  <p><a class="btn btn-info" href="#" id="car2go-goback">Okay!</a></p>
+</div>
+</nav>

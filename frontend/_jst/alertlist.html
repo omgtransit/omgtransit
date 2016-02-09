@@ -1,0 +1,21 @@
+<% if ( alerts.length === 0 ) { %>
+  <div class="alert alert-info">You haven't set any alerts yet.</div>
+<% } else { %>
+  <div class="btn-group btn-group-vertical" style="width:100%;">
+    <% alerts.each( function(alert) { %>
+      <div class="btn stopbutton" data-id="<%= alert.get('id') %>" style="height:100%;" data-url="<%= alert.get('realtime_url') %>">
+        <div class="trashalert pull-right" style="font-size:26px;padding:10px 0 10px 10px;"><i class="icon-trash"></i></div>  
+        <h4><%= alert.get('route') %> - <%= alert.formatTime() %></h4>
+        <div><%= alert.get('stop_name') %></div>
+        <div class="clearfix" style="margin: 5px 0;">
+          <% if ( alert.get('recurring') ) { %>
+            <div class="label label-info"><%= alert.get('recurring_days').replace(/,/g,', ') %></div>
+          <% } else { %>
+            <div class="label">Not recurring</div>
+          <% } %>
+          <div class="label pull-right"><%= alert.get('platform') %></div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+<% } %>

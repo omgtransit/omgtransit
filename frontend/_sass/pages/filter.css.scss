@@ -1,0 +1,66 @@
+@import "colors.css.scss";
+
+.filter-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-bottom: 85px;
+  color: $dark_grey;
+
+  h3 {
+    margin: 15px 0 15px 0;
+    text-align: center;
+  }
+
+  ul {
+    margin: 0 5px 30px 5px;
+  }
+
+  li {
+    position: relative;
+    margin: 5px 0;
+    
+    list-style: none;
+    background: white;
+
+    button {
+      width: 100%;
+      text-align: left;
+      display: block;
+      padding: 20px 10px;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .directions-travel-mode-icon {
+      margin: 2px 15px 2px 10px;
+    }
+
+    i {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: $bg_red;
+      font-size: 18px;
+    }
+  }
+
+  .active {
+    i:before {
+      content: "\f058";
+    }
+  }
+
+  .signin {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .btn-okay {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    text-align: center;
+    display: block;
+  }
+}

@@ -1,0 +1,40 @@
+<h1><%= data.route %></h1>
+<p>
+  @ <%= data.stopName %><br>
+  is arriving at <span style="font-size:18px; color: #ef502e;"><%= data.alertTimeFormatted %></span>.
+</p><br>
+<p style="font-size: 16px;">
+  <div style="width: 260px; border: 1px solid #396076; border-radius: 7px; padding: 15px; margin: 0 auto;">
+    Alert me <select name="alert-select" id="alert-select" style="width:65px; color: #000; margin: 0 5px 0 5px; height: 30px;">
+      <% for (var i=1; i < 16; i++ ) { %>
+        <option value="<%= i %>" <% if (i === 5) { %>selected<% } %>><%= i %>-<%= i + 1 %></option>
+      <% } %>
+    </select> min before.
+    <div style="margin:15px auto 5px auto;">
+      <input type="checkbox" id="alert-recurring" name="alert-recurring"> Recurring?
+      <div class="clearfix alert-day-list hide">
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-mon" name="alert-mon" value="mon"><br>Mon
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-tue" name="alert-tue" value="tue"><br>Tue
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-wed" name="alert-wed" value="wed"><br>Wed
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-thu" name="alert-thu" value="thu"><br>Thu
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-fri" name="alert-fri" value="fri"><br>Fri
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-sat" name="alert-sat" value="sat"><br>Sat
+        </div>
+        <div class="pull-left alert-day">
+          <input type="checkbox" id="alert-sun" name="alert-sun" value="sun"><br>Sun
+        </div>
+      </div>
+    </div>
+  </div>
+</p>

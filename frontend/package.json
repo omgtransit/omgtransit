@@ -1,0 +1,15 @@
+{
+  "name": "OmgTransit",
+  "version": "0.1.0",
+  "authors": "Jason Kadrmas, Richard Barnes, Louis Gossling",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-jst": "~0.5.1",
+    "grunt-contrib-compass": "~0.7.0",
+    "grunt-peon-gui": "~1.0.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-copy-to": "0.0.10"
+  }
+}

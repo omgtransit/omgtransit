@@ -1,0 +1,20 @@
+<h3>Filters</h3>
+<% if ( Omg.user.signedIn ) { %>
+  <ul>
+    <% _.each( AppConfig.filters, function(item) { %>
+      <li <% if (Omg.filters.hasFilter(item.types)) { %>class="active"<% }%>>
+        <button type="button" data-types="[<%= item.types.join(',') %>]">
+          <div class="directions-travel-mode-icon directions-<%= item.icon %>-icon pull-left"></div> <%= item.name %>
+        </button>
+        <i class="icon-circle-blank"></i>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="#/map" class="btn-red btn-okay">Go!</a>
+  <button class="btn-secondary">Clear</button>
+<% } else { %>
+  <p class="center">You need to be signed in to add filters.</p>
+  <br>
+  <a href="#/me/sign_in" class="btn btn-primary btn-red signin">Sign In</a><br><br>
+  <p class="center"><a href="#/me/sign_up" class="signup">Not a member? Sign up.</a></p>
+<% } %>

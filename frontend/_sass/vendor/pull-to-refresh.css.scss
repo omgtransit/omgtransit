@@ -1,0 +1,36 @@
+// Optional offset. For headers, etc.
+$offset: 50px;
+
+.pull-to-refresh {
+  margin-top: $offset; 
+
+  background: #f3f1f2;
+  height: 80px;
+  position: absolute;
+  transition: transform 0.2s;
+  transform: translate(0, -130px);
+  width: 100%;
+
+  .rband {
+    color: #686868;
+    font-size: 18px;
+    padding: 25px 0 0 0;
+    text-align: center;
+
+    .text {
+      display: inline-block;
+      font-weight: 200;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.pull-to-refresh-active {
+  transition: transform 0.2s;
+}
+
+.pull-to-refresh-container-active {
+  position: absolute;
+  transition: transform 0.7s;
+}

@@ -1,0 +1,8 @@
+<% 
+  var bikeplural='';
+  var dockplural='';
+  if(data[0].bikes!=1) bikeplural='s';
+  if(data[0].docksFree!=1) dockplural='s';
+%>
+<span class="label route-chip"><%= data[0].bikes %> Bike<%= bikeplural %> Available</span>
+<span class="label route-chip"><%= data[0].docksFree %> Empty Dock<%= dockplural %></span>

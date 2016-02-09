@@ -1,0 +1,7 @@
+<% var model=data[0] %>
+
+<div>
+  <span class="label route-chip car2go-chip">Fuel <%= model.fuel %>%</span>
+  <span class="label route-chip car2go-chip">Int <% if (model.interior === 'GOOD') { %><i class="icon-thumbs-up"></i><% } else { %><i class="icon-thumbs-down"></i><% } %></span>
+  <span class="label route-chip car2go-chip">Ext <% if (model.exterior === 'GOOD') { %><i class="icon-thumbs-up"></i><% } else { %><i class="icon-thumbs-down"></i><% } %></span>
+</div>

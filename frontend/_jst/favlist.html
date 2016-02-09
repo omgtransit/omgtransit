@@ -1,0 +1,17 @@
+<% if ( stops.length === 0 ) { %>
+  <div class="alert alert-info">You haven't chosen any favorite stops yet.</div>
+<% } else { %>
+  <ul>
+  <% stops.each( function(stop, index) { %>
+    <% ids = stop.get('stop_id').split('-') %>
+    <li data-id="<%= stop.get('stop_id') %>">
+      <a href="#/stop/<%= stop.get('stop_url') %>" class="favortite-stop" data-index="<%= index %>">
+        <div class="stop-name"><%= stop.get('stop_name') %></div>
+        <% realtime_stop = JSON.stringify( stop ).replace(/'/g, '') %>
+          <div class="real-time clearfix" id="<%= stop.get('stop_id') %>" data-attr="<%= stop.get('stop_id') %>" data-name="<%= stop.get('stop_name') %>" data-stopdata='<%= realtime_stop %>'></div>
+      </a>
+      <div class="trashstop pull-right"><i class="icon-trash"></i></div>
+    </li>
+  <% }); %>
+  </ul>
+<% } %>

@@ -1,0 +1,58 @@
+@import "colors.css.scss";
+
+.favorites-container, .alert-container {
+  max-width: 940px;
+  margin: 0 auto;
+
+  h3 {
+    margin: 15px 0 15px 0;
+    text-align: center;
+  }
+  padding: 15px;
+
+  .trashstop {
+    color: $dark_grey;
+    font-size: 24px;
+    padding: 10px;
+    z-index: 50;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .real-time {
+    width: 90%;
+  }
+  
+  ul {
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+    background: white;
+    padding: 4px 9px;
+    margin: 5px;
+  }
+
+  .favortite-stop {
+    display: block;
+    padding-right: 30px;
+  }
+  
+  .real-time {
+    margin: 5px 0;
+  }
+}
+
+.alert-container {
+
+  h3 {
+    margin: 0;
+  }
+
+  .alert-line {
+    text-align: left;
+  }
+}

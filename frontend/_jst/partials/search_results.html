@@ -1,0 +1,8 @@
+<% _.each(data, function(item, index) { %>
+  <li class="result" data-index="<%= index %>">
+    <div class="clearfix">
+      <h4 class="pull-left"><i class="icon-location-arrow"></i></h4>
+      <div class="address pull-left"><%= item.formatted_address %></div>
+    </div>
+  </li>
+<% }) %>

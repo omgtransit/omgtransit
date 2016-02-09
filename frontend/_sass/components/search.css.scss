@@ -1,0 +1,74 @@
+.search-container {
+  margin: 0 auto;
+  max-width: 400px;
+
+  h4 {
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  input[type=text] {
+    width: 100%;
+    height: 45px;
+    padding: 7px;
+    background: white;
+    border-radius: 0;
+    border: 0;
+    text-align: center;
+  }
+
+  i {
+    display: inline-block;
+  }
+
+  .alert-danger {
+    text-align: center;
+  }
+
+  .search-ui {
+    margin: 0 10px;
+  }
+
+  .btn-red {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .search-results {
+    margin: 0;
+    
+    li {
+      h4 {
+        margin: 0;
+      }
+
+      list-style: none;
+      text-align: left;
+      background: white;
+      position: relative;
+      text-decoration: none;
+      color: black;
+      color: #686868;
+      margin: 5px;
+      padding: 20px 0 5px 20px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        background: url(../images/chevron-small-right.png);
+        width: 20px;
+        height: 32px;
+        right: 13px;
+        top: 13px;
+      }
+
+      .address {
+        width: 80%;
+        font-size: 14px;
+        padding-bottom: 15px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

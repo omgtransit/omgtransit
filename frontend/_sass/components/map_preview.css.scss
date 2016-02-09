@@ -1,0 +1,93 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "colors.css.scss";
+
+#map-preview {
+
+  /* Transition if available */
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in-out);
+
+  position:   fixed;
+  height:     50px;
+  bottom:     50px;
+  width:      100%;
+  text-align: left;
+
+  .stopbutton {
+    border: none;
+    margin: 0;
+  }
+
+  .loading {
+    text-align: center;
+    width:      100px;
+    margin:     20px auto;
+  }
+
+  .alert-network {
+    margin: 10px;
+  }
+
+  #makefav {
+    cursor:   pointer;
+    position: absolute;
+    top:      15px;
+    right:    15px;
+  }
+
+  .btn-list {
+    text-align:  center;
+    width:       100%;
+    display:     block;
+    padding-top: 10px;
+    background:  $dark_blue;
+    color:       #fff;
+    height:      50px;
+    position:    fixed;
+    bottom:      0;
+    z-index:     2;
+    font-size:   20px;
+    font-family: 'OpenSansLight';
+    font-weight: 400;
+  }
+
+  .stop-header-hud {
+    padding:     10px;
+  }
+
+  .detail-back {
+    cursor:   pointer;
+    position: absolute;
+    left:     15px;
+    top:      5px;
+    color:    $dark_grey;
+  }
+
+  #view-stop-preview {
+    @include transition-property(all);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in-out);
+    position: fixed;
+    bottom:   -20px;
+    left:     0;
+    width:    100%;
+    height:   60px;
+    overflow: hidden;
+    z-index:  1;
+  }
+
+  #view-stop-preview.active {
+    bottom:     50px;
+  }
+
+  img.loading {
+    display:    block;
+    margin:     0 auto;
+    top:        50%;
+    margin-top: -5px;
+    position:   relative;
+  }
+
+}

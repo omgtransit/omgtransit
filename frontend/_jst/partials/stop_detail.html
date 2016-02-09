@@ -1,0 +1,15 @@
+<% if(typeof(stop.stop_name)==="undefined") stop.stop_name=stop.name; //TODO(Richard): This is another shim! %>
+<div class="stop-header clearfix">
+  <div class="detail-back pull-left"></div>
+  <div class="stop-info pull-left">
+    <div class="stop-name">
+      <%= formatStopName(stop) %>
+    </div>
+  </div>
+  <% if ( showFavorite(stop) ) { %>
+  <div class="favorite" title="Make this stop a favorite">
+    <i class="icon-star star"></i>
+  </div>
+  <% } %>
+</div>
+<div class="loading hide">Loading<br><img src="assets/images/horz_loading.gif"></div>

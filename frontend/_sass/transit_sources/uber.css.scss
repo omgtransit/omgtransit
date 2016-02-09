@@ -1,0 +1,49 @@
+.uber {
+  border-radius: 0;
+  width: 100%;
+  margin: 10px 0 3px 0;
+  text-align: left;
+  padding: 10px 2px;
+
+  background: #09091a;
+  color: #c0c0c8;
+  text-shadow: none;
+
+  ul {
+    margin: 10px 0;
+    padding: 0;
+  }
+
+  .minaway {
+    padding-right: 50px;
+    font-style: italic;
+  }
+
+  .uber-preview {
+    padding-right: 10px;
+    font-style: italic;
+  }
+
+  li {
+    position: relative;
+    border-top: 1px solid #565654;
+    padding: 15px 0;
+    list-style: none;
+  }
+  .chevron-right {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    padding-top: 5px;
+  }
+
+  .uber-option {
+    margin-left: 10px;
+  }
+}
+
+.uber:hover {
+  background: #2e2e3c;
+  color: #c0c0c8;
+  border-top: 1px solid #09091a;
+}

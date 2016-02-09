@@ -1,0 +1,29 @@
+$ios-statusbar-height: 20;
+
+.platform-ios7plus-cordova {
+  .navbar {
+    padding-top: $ios-statusbar-height + px !important;
+  }
+  
+  .app-container {
+    padding-top: $ios-statusbar-height + 50 + px !important;
+  }
+
+  .btn-refresh-container {
+    top: $ios-statusbar-height + 50 + px !important;
+  }
+
+  .btn-current-location {
+    top: $ios-statusbar-height + 55 + px !important;
+  }
+
+  .signin-container {
+    padding-top: $ios-statusbar-height + px !important;
+  }
+  .btn-hide-login {
+    padding-top: $ios-statusbar-height + px !important;
+  }
+  .btn-hide-menu {
+    padding-top: 13px !important;
+  }
+}

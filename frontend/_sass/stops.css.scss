@@ -1,0 +1,278 @@
+@import "colors.css.scss";
+
+table {
+  font-size:16pt;
+}
+
+.stop-table {
+  td {
+    font-family: 'OpenSansLight', Helvetica, sans-serif;
+    color: $dark_grey;
+    padding: 8px 4px 4px 4px;
+    height: 60px;
+    vertical-align: middle;
+  }
+
+  .route-number {
+    font-size: 22px;
+
+    i {
+      font-size: 20px;
+      margin-right: 3px;
+    }
+  }
+
+  .desc {
+    font-size:   12px;
+    overflow:    hidden;
+    white-space: nowrap;
+    margin-left: 5px;
+  }
+
+  td.prio {
+    width: 12px;
+    padding: 0;
+  }
+
+  .priority {
+    height: 40px;
+    width: 12px;
+  }
+
+  td.time {
+    text-align: right;
+  }
+  a {
+    color: $dark_grey;
+    text-decoration: none;
+  }
+  .btn-alert {
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+.route-list-map {
+  .stop-list {
+    display: none;
+  }
+
+  .current-route-stops {
+    height: 510px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    .active {
+      background: #08c;
+      color: #fff;
+
+      a {
+        color: #fff;
+      }
+    }
+    td {
+      font-size: 12px;
+      padding: 4px;
+    }
+    
+  }
+}
+
+#yelp {
+  display: none;
+}
+
+.yelp-table {
+  border: 1px solid #ccc;
+  th {
+    font-family: 'OpenSansSemibold', Helvetica, sans-serif;
+    font-size: 0.8em !important;
+    background: #f5f7f7;
+  }
+  td {
+    font-family: 'OpenSansRegular', Helvetica, sans-serif;
+    font-size: 0.8em;
+  }
+}
+
+.stop-header {
+  position: relative;
+  background: $grey;
+  min-height: 60px;
+  display: table;
+  width: 100%;
+
+  .detail-back {
+    padding: 20px 12px 0 12px;
+    cursor: pointer;
+    height: 32px;
+    width: 23px;
+    margin: 15px 10px;
+    background: url('../images/chevron-small-left.png');
+  }
+
+  .stop-info {
+    display: table;
+    height: 60px;
+    width: 78%;
+  }
+
+  .back-arrow {
+    color: $white;
+  }
+
+  img {
+    vertical-align: bottom;
+  }
+
+  #thestop {
+    font-family: 'OpenSansLight', Helvetica, sans-serif;
+    font-size: 1.1em !important;
+    font-weight: normal;
+    font-style: italic;
+    color: $dark_grey;
+    margin-left: 10px;
+  }
+
+  #makefav {
+    margin-top:0;
+    margin-right:10px;
+  }
+
+  .favorite {
+    position: absolute;
+    top: 20px;
+    right: 13px;
+    cursor: pointer;
+    .starr {
+      font-size: 16px;
+    }
+  }
+
+  #mapshow {
+    margin-top:0;
+    margin-right:5px;
+  }
+}
+
+.stop_detail {
+  background: white;
+  margin: 0;
+
+  .stop-name {
+    margin: 13px 0 0 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    white-space: normal;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.stop_detail.sv_bikeshare_station {
+  table td {
+    width:33%;
+  }
+}
+
+.stop-desc {
+  margin-left: 0.5em;
+  font-size: 90%;
+  font-style: italic;
+}
+
+
+.routes-table {
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+  border-radius: 7px;
+  
+  .active {
+    border-radius: 7px;
+    background: #08c;
+    color: #fff;
+  }
+}
+
+.stop-content {
+  padding-bottom: 53px;
+}
+
+div.stop_detail {
+  .detail-header-icon {
+    display: inline-block;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+
+  div.car2go {
+    hr {
+      margin: 15px 0;
+    }
+
+    .info {
+      .span2 {
+        font-weight: bold;
+        color: #009fe4;
+        width: 110px;
+        margin-left: 10px;
+      }
+    }
+
+    .rental-status {
+      text-align: center;
+      display: block;
+      font-size: 30px;
+      width: 250px;
+      margin: 20px auto;
+      
+      span {
+        font-size: 12px;
+      }
+
+      .dash-nopad {
+        background: #009fe4;
+        border-radius: 20px;
+        height: 90px;
+        border: 2px solid #fff;
+        margin: 10px 30px 10px 0;
+        box-shadow: 0 1px 2px 1px rgba(0,0,0,0.3);
+        overflow: hidden;
+        display:inline-block;
+      }
+
+      .dash {
+        background: #009fe4;
+        border-radius: 20px;
+        padding: 15px 30px 15px 30px;
+        margin: 10px 30px 10px 0;
+        text-align: center;
+        border: 2px solid #fff;
+        box-shadow: 0 1px 2px 1px rgba(0,0,0,0.3);
+        color: #fff;
+        height: 90px;
+        display: inline-block;
+
+        p {
+          display: table-cell; 
+          vertical-align: middle; 
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+#detail-map {
+  width:          100%;
+  height:         130px;
+  pointer-events: none;
+}
+
+.rideshares {
+  margin: 0 3px;
+}

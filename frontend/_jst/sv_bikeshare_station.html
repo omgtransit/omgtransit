@@ -1,0 +1,33 @@
+<% var model=models[0]; %>
+<div style="background-color:#9CC100;color:white;margin-top:-10px">
+  <h4 style="padding-top:15px;text-align:center;font-weight:bold;"><%= stop.stop_street %></h4>
+  <table class="table centertd">
+    <tbody>
+      <tr style="font-size:30px">
+        <td><%= model.bikes %></td>
+        <td><%= model.docksFree %></td>
+        <td><%= model.docksTotal %></td>
+      <tr>
+        <td>Bikes</td>
+        <td>Docks Free</td>
+        <td>Docks Total</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="padding:0px 44px;">
+  <p style="font-family:OpenSansSemiBold;font-weight:bold;font-size:20px">How does this work?</p>
+
+  <ol>
+    <li>Pick the bike up at any station</li>
+    <li>Pay a rental fee</li>
+    <li>Pay more if you keep the bike too long</li>
+    <li>Drop the bike off at another station</li>
+  </ol>
+  <% if (stop.source === 'NICERIDE') { %>
+    <a href="https://www.niceridemn.org/" target="_blank" onclick="logEvent('Click', 'event', 'Outbound-Link', 'niceridemn.org');" style="width:100%;text-align:center;display: block;margin-bottom:20px;">niceridemn.org</a>
+  <% } else if (stop.source === 'PRONTO') { %>
+    <a href="https://www.prontocycleshare.com/" target="_blank" onclick="logEvent('Click', 'event', 'Outbound-Link', 'prontocycleshare.com');" style="width:100%;text-align:center;display: block;margin-bottom:20px;">prontocycleshare.com</a>
+  <% } %> 
+</div>

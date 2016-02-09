@@ -1,0 +1,23 @@
+<ul>
+  <% if ( Omg.user.signedIn ) { %>
+    <li class="sign-out"><a href="#/me/sign_out" class="clearfix"><i class="icon-user"></i> Hello, <%= Omg.user.get('user_first_name') %> <small class="pull-right">Sign Out</small></a></li>
+  <% } else { %>
+    <li><a href="#/me/sign_in"><i class="icon-user"></i> Sign In</a></li>
+  <% } %>
+  </li>
+  <li>
+    <a href="#/alerts"><i class="icon-bell"></i> Alerts</a>
+  </li>
+  <li>
+    <a href="#/filters"><i class="icon-filter"></i> Filters</a>
+  </li>
+  <li>
+    <a href="#/help"><i class="icon-omg-help"></i> Help</a>
+  </li>
+  <li>
+    <a href="#/about"><i class="icon-info-sign"></i> About</a>
+  </li>
+  <li>
+    <a href="mailto:hello@omgtransit.com" class="mail-us"><i class="icon-envelope"></i>Email Us</a>
+  </li>
+</ul>

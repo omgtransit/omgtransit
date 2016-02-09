@@ -1,0 +1,53 @@
+.trips-container {
+  max-width: 940px;
+  margin: 0 auto;
+
+  .trip-header {
+    text-align: center;
+  }
+  
+  ul {
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    margin: 5px;
+    
+    list-style: none;
+    background: white;
+
+    i {
+      margin: 0 7px;
+    }
+
+    a {
+      display: block;
+      padding: 20px 10px;
+      color: #686868;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      background: url(../images/chevron-small-right.png);
+      width: 20px;
+      height: 32px;
+      right: 13px;
+      top: 13px;
+    }
+  }
+
+  small {
+    font-size: 10px;
+    font-style: italic;
+  }
+
+  .icon {
+    margin: 3px;
+  }
+
+  .stat {
+    margin-right: 35px;
+  }
+}

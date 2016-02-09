@@ -1,0 +1,28 @@
+<% if (!items[0].nearby_stops) { %>
+  <div class="alert alert-info">No stops found within 10 miles. I'll put you in central Minneapolis to demonstrate how I work. <a href="mailto:omgtransit@gmail.com">Email us</a> if you'd like to see us in your city!</div>
+
+<% } else if (items[0].stops.length === 0) { %>
+  <div class="alert alert-info">No stops found.</div>
+<% } %>
+
+<% _.each(items[0].stops.slice(0,10), function(stop, index) { %>
+  <% if(!KnownTransitType(stop)) return; %>
+  <% var texticon=AppConfig.transit_mode_icons[stop.stop_type].texticon; %>
+  <a href="#/stop/<%= stop.stop_url %>" class="stopbutton <%= stop.stop_type %>" data-stopid="<%= stop.stop_id %>" data-sourceid="<%= stop.source_id %>" data-stopurl="#/stop/<%= stop.stop_url %>" data-index="<%= index %>">
+
+      <div class="stop-icon directions-travel-mode-icon directions-<%= texticon %>-icon"></div>
+      <div class="distance-label"><%= prettyRounding(stop.distance*5280) %>'</div>
+
+      <div class="stop-info">
+        <div class="stop-name">
+          <%= formatStopName(stop) %>
+        </div>
+
+        <div class="real-time <%= stop.stop_type %>" id="<%= stop.id %>" data-attr="<%= stop.stop_id %>" data-name="<%= stop.stop_name %>" data-stopdata='<%= JSON.stringify(stop) %>'>
+          <div class="loadingimg"><i class="icon-spinner"></i> Loading</div>
+        </div>
+      </div>
+
+      <img src="assets/images/chevron-small.png" class="icon-chevron-right">
+    </a>
+<% }); %>

@@ -1,0 +1,18 @@
+<% _.each(models, function(item, index) { %>
+  <table style="margin-top:10px;margin-left:10px;" class="zipcar-table">
+    <tr>
+      <td><h3><%= item.brand %> <%= item.make %></h3></td>
+      <td class="thumb" align="right"><img src="https://media.zipcar.com/images/model-image?model_id=<%= item.modelId %>&mode=thumb"></td>
+    </tr>
+    <tr><td colspan="2">Seats: <%= item.seatbelts %></td></tr>
+    <tr><td colspan="2">Hourly: <%= item.hourlyCostFm %></td></tr>
+    <tr><td colspan="2">Daily: <%= item.dailyCostFm %></td></tr>
+    <tr><td colspan="2"><%= item.capacity %></td></tr>
+  </table>
+<% }) %>
+
+<hr class="zipline">
+<div style="padding:20px 10px;clear:both;">
+  <p><b>Zipcar</b> has many cars in your city. Members use Zipcar as an alternative to the costs and hassles of owning or renting a car.</p>
+  <p style="text-align:center;font-size:130%;font-family:OpenSansSemiBold"><a href="https://members.zipcar.com/registration/" target="_blank" onClick="logEvent('Click', 'event', 'Outbound-Link', 'zipcar.com');">Register Now</a></p>
+</div>

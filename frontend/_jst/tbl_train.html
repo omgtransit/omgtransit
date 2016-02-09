@@ -1,0 +1,7 @@
+<% _.each(data, function(item) { %>
+<% console.log(item); %>
+  <span class="label route-chip <%= item.priority %>" data-route="<%= item.route %>">
+    <% if (item.direction) { %><i class="<%= item.direction %>"></i><% } %>
+    <span class="route"><%= item.route %></span> &bull; <span class="eta"><%= item.TimeText %></span>
+  </span>
+<% }); %>

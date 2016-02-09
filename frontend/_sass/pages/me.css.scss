@@ -1,0 +1,50 @@
+.me-container, .trips-container {
+  max-width: 940px;
+  margin: 0 auto;
+  
+  ul {
+    margin: 0;
+  }
+
+  li {
+    position: relative;
+    margin: 5px;
+    
+    list-style: none;
+    background: white;
+
+    i {
+      margin: 0 7px;
+    }
+
+    a {
+      display: block;
+      padding: 12px 10px;
+      color: #686868;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      background: url(../images/chevron-small-right.png);
+      width: 20px;
+      height: 32px;
+      right: 8px;
+      top: 5px;
+    }
+
+    a#contribute {
+      color: #a7bf32;
+    }
+  }
+
+  .sign-out {
+    &:after {
+      background: none;
+    }
+    small {
+      font-size: 11px;
+      color: $bg_red;
+    }
+  }
+}
