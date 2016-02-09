@@ -28,3 +28,6 @@ server/tmp/*
 /frontend/platforms/android/assets/*
 /frontend/www/assets/javascripts/vendor/visualize/stops.js
 /api/certs/*
+/api/.env
+/api/node_modules/
+node_modules/
