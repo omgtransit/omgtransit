@@ -4,7 +4,6 @@ services:
     image: postgres
   app:
     build: .
-    command: bundle exec rails -p 3000 -b '0.0.0.0'
     volumes:
       - ./server:/home/omg/app/server
     ports:
