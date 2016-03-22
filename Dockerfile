@@ -38,6 +38,7 @@ RUN rvm install $(cat .ruby-version) && \
 ADD server/ $SERVER_HOME
 RUN echo "#!/bin/bash" > /etc/my_init.d/01_omg_server.sh
 RUN echo "cd $SERVER_HOME" >> /etc/my_init.d/01_omg_server.sh
+RUN echo "/bin/bash -l -c \"rvm use --default $(cat .ruby-version)\"" >>  /etc/my_init.d/01_omg_server.sh
 RUN echo "/bin/bash -l -c \"bundle exec rails s -p 3000\"" >>  /etc/my_init.d/01_omg_server.sh
 
 RUN chmod +x /etc/my_init.d/01_omg_server.sh
