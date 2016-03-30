@@ -83,8 +83,8 @@ class User < ActiveRecord::Base
     @result = HTTParty.post(url, 
       :body => { 
         :list => 'OMG Transit Users',
-        :api_user => 'omgtransit',
-        :api_key => OmgTransit::Application.config.sendgrid['SENDGRID_PASSWORD'],
+        :api_user => OmgTransit::Application.config.sendgrid_user,
+        :api_key => OmgTransit::Application.config.sendgrid_password,
         :data => {
           "email" => self.email,
           "name" => self.first_name + " " + self.last_name,

@@ -39,7 +39,8 @@ OmgTransit::Application.configure do
 
   config.google_maps_api_key = ENV['google_maps_api_key']
 
-  config.sendgrid = YAML.load_file("sendgrid.yml")[::Rails.env]
+  config.sendgrid_password =  ENV['sendgrid_password']
+  config.sendgrid_user     =  ENV['sendgrid_user']
   config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
   
   ActionMailer::Base.smtp_settings = {
@@ -47,7 +48,7 @@ OmgTransit::Application.configure do
     :port           => '587',
     :authentication => :plain,
     :user_name      => '',
-    :password       => config.sendgrid['SENDGRID_PASSWORD'],
+    :password       => config.sendgrid_password,
     :domain         => '',
     :enable_starttls_auto => true
   }
