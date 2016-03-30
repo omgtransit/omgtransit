@@ -2,6 +2,12 @@ Server Setup
 ==============================
 
 Installation
+* set env secrets
+* bcdatabase: either remove it or make it work
+* `docker-compose build`
+* `docker-compose up`
+
+Installation
 ------------
  1. Download and install [ElasticSearch](http://www.elasticsearch.org/)
  2. Install Ruby 1.9.3
