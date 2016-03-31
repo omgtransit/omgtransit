@@ -23,7 +23,8 @@ services:
       RACK_ENV: development
       RAILS_ENV: development
 
-      secret_key: 'not really a secret for now'
+      secret_key: 'not really a secret key for now kasjdbfjasdhblajb vlak34qaw4ar'
+      secret_token: 'not really a secret token for now kasjdbfjasdhblajb vlak34qaw4ar'
       google_maps_api_key: idk
       sendgrid_user: omg_transit
       sendgrid_password: idk
