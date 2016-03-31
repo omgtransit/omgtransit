@@ -68,7 +68,14 @@ module OmgTransit
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-	config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    config.google_maps_api_key = ENV['google_maps_api_key']
+
+    config.sendgrid_password =  ENV['sendgrid_password']
+    config.sendgrid_user     =  ENV['sendgrid_user']
+    config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
+
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.transit_data_path = '/etc/omgtransit/setup'
 
     config.to_prepare do

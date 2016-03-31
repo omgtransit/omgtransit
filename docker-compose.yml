@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+    ports:
+      - "5432:5432" # Bind host port 5432 to PostgreSQL port 5432
   app:
     build: .
     volumes:
@@ -10,3 +12,18 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    environment: &app_environment
+      # PostgreSQL Development Database:
+      DATABASE_URL: postgres://postgres:omg_development@db:5432/omg_development?pool=5&encoding=unicode&schema_search_path=public
+      # Enable the byebug debugging server - this can be overriden
+      # from the command line:
+      ENABLE_DEBUG_SERVER: 'true'
+
+      # Run the app in the 'development' environment:
+      RACK_ENV: development
+      RAILS_ENV: development
+
+      secret_key: 'not really a secret for now'
+      google_maps_api_key: idk
+      sendgrid_user: omg_transit
+      sendgrid_password: idk

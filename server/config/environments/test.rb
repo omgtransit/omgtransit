@@ -35,5 +35,9 @@ OmgTransit::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  config.google_maps_api_key = ENV['google_maps_api_key']
+  config.google_maps_api_key = 'fake'
+
+  config.sendgrid_password =  'fake'
+  config.sendgrid_user     =  'fake'
+  config.action_mailer.default_url_options = { :host => 'localhost'} ]
 end

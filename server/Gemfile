@@ -25,7 +25,6 @@ gem 'compass-rails'
 gem 'httparty'
 gem 'jquery-rails'
 gem 'tire' # elasticsearch wrapper
-gem 'bcdatabase' # database credential management
 gem 'nokogiri'
 gem 'rvm-capistrano', require: false
 gem 'whenever'

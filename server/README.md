@@ -2,8 +2,8 @@ Server Setup
 ==============================
 
 Installation
-* set env secrets
-* bcdatabase: either remove it or make it work
+* initialize db
+  *  `docker-compose run --rm app bundle exec rake db:create`
 * `docker-compose build`
 * `docker-compose up`
 

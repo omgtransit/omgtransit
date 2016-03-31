@@ -1,9 +1,7 @@
-<%
-  require 'bcdatabase'
-  bcdb = Bcdatabase.load
-%>
+development:
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
 
-<%= bcdb.development :omgtransit, :development %>
-<%= bcdb.test        :omgtransit, :test        %>
-<%= bcdb.production  :omgtransit, :production  %>
-<%= bcdb.onlinedev   :omgtransit, :onlinedev   %>
+test:
+  adapter: postgresql
+  url: <%= ENV['TEST_DATABASE_URL'] %>

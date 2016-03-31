@@ -35,12 +35,6 @@ OmgTransit::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  config.google_maps_api_key = ENV['google_maps_api_key']
-
-  config.sendgrid_password =  ENV['sendgrid_password']
-  config.sendgrid_user     =  ENV['sendgrid_user']
-  config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'} 
-  
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
