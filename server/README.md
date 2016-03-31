@@ -3,7 +3,7 @@ Server Setup
 
 Installation
 * initialize db
-  *  `docker-compose run --rm app bundle exec rake db:create`
+  *  `docker-compose run --rm app bundle exec rake db:create db:migrate`
 * `docker-compose build`
 * `docker-compose up`
 
