@@ -30,6 +30,6 @@ RUN echo "#!/bin/bash" > /etc/my_init.d/01_omg_server.sh
 RUN echo "cd $SERVER_HOME" >> /etc/my_init.d/01_omg_server.sh
 RUN echo "/bin/bash -l -c \"bundle exec rails s -p 3000\"" >>  /etc/my_init.d/01_omg_server.sh
 
-RUN chmod +x /etc/my_init.d/01_omg_server.sh
+RUN chmod +x /etc/my_init.d/01_omg_server.sh 
 
-CMD ["/sbin/my_init"]
+CMD ["/etc/my_init.d/01_omg_server.sh"]
