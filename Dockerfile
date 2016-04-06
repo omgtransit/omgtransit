@@ -7,29 +7,37 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential curl libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN npm install -g grunt grunt-cli
+RUN npm install grunt-usemin grunt-preprocess grunt-filerev grunt-contrib-cssmin grunt-contrib-uglify grunt-contrib-concat grunt-contrib-clean
 
 # Setup Folders
 ENV APP_HOME /usr/app
 ENV SERVER_HOME $APP_HOME/server
 ENV API_HOME $APP_HOME/api
+ENV ASSETS_HOME $APP_HOME/frontend
 RUN mkdir -p $SERVER_HOME
 RUN mkdir -p $API_HOME
 
-# Prep Ruby/Bundler
-ADD server/.ruby-version $SERVER_HOME/.ruby-version
-ADD server/Gemfile $SERVER_HOME/Gemfile
-ADD server/Gemfile.lock $SERVER_HOME/Gemfile.lock
+# bundle install
+WORKDIR /tmp
+ADD server/Gemfile Gemfile
+ADD server/Gemfile.lock Gemfile.lock
+RUN bundle install
 
-# Install the Ruby
-WORKDIR $SERVER_HOME
-RUN /bin/bash -l -c 'bundle install --standalone'
-
-# Add the App
+# mounts
+# TODO mount these later if possible
 ADD server/ $SERVER_HOME
+ADD frontend/ $ASSETS_HOME
+
+# generate build.js
+WORKDIR $ASSETS_HOME
+RUN npm install
+RUN grunt -v buildweb
+
+# start script
+WORKDIR $SERVER_HOME
 RUN echo "#!/bin/bash" > /etc/my_init.d/01_omg_server.sh
 RUN echo "cd $SERVER_HOME" >> /etc/my_init.d/01_omg_server.sh
 RUN echo "/bin/bash -l -c \"bundle exec rails s -p 3000\"" >>  /etc/my_init.d/01_omg_server.sh
-
-RUN chmod +x /etc/my_init.d/01_omg_server.sh 
-
+RUN chmod +x /etc/my_init.d/01_omg_server.sh
 CMD ["/etc/my_init.d/01_omg_server.sh"]
