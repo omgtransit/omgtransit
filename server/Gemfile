@@ -26,7 +26,6 @@ gem 'httparty'
 gem 'jquery-rails'
 gem 'tire' # elasticsearch wrapper
 gem 'nokogiri'
-gem 'rvm-capistrano', require: false
 gem 'whenever'
 
 gem 'rubyzip'
