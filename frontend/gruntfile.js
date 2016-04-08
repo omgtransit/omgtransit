@@ -102,7 +102,7 @@ module.exports = function(grunt){
     },
 
     clean: {
-      web: ["<%= appConfig.webRoot %>"]
+      css: ["<%= appConfig.appRoot %>/assets/stylesheets"]
     },
 
     useminPrepare: {
@@ -150,8 +150,9 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('buildweb', [
+    'clean:css',
     'jst',
-    //'compass:dist',
+    'compass:dist',
     'useminPrepare',
     'concat',
     'cssmin',

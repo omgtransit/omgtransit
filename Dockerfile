@@ -32,7 +32,7 @@ ADD frontend/ $ASSETS_HOME
 # generate build.js
 WORKDIR $ASSETS_HOME
 RUN npm install
-RUN grunt -v buildweb
+RUN grunt -v buildweb 
 
 # start script
 WORKDIR $SERVER_HOME
