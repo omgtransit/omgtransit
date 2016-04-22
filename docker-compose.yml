@@ -1,17 +1,43 @@
 version: '2'
 services:
-  db:
-    image: postgres
+  mongodb:
+    image: mongo
     ports:
-      - "5432:5432" # Bind host port 5432 to PostgreSQL port 5432
-  app:
-    build: .
+      - "27017:27017"
+    volumes_from:
+      - mongodata
+    command: --smallfiles --rest --auth
+  mongodata:
+    image: mongo
     volumes:
-      - ./server:/home/omg/app/server
+      - /data/db
+    command: --break-mongo
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  db:
+    image: mdillon/postgis
+    ports:
+      - "5432:5432"
+  railsweb:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./:/home/omg/app/server
+      - ./data/:/data
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+      - mongodb
+      - elasticsearch
     environment: &app_environment
       # PostgreSQL Development Database:
       DATABASE_URL: postgres://postgres:omg_development@db:5432/omg_development?pool=5&encoding=unicode&schema_search_path=public
