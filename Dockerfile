@@ -8,7 +8,6 @@ RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN npm install -g grunt grunt-cli
-RUN npm install grunt-usemin grunt-preprocess grunt-filerev grunt-contrib-cssmin grunt-contrib-uglify grunt-contrib-concat grunt-contrib-clean
 
 # Setup Folders
 ENV APP_HOME /usr/app

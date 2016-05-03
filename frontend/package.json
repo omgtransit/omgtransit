@@ -9,6 +9,13 @@
     "grunt-contrib-jst": "~0.5.1",
     "grunt-contrib-compass": "~0.7.0",
     "grunt-peon-gui": "~1.0.0",
+    "grunt-preprocess": ">0",
+    "grunt-filerev": ">0",
+    "grunt-contrib-cssmin": ">0",
+    "grunt-contrib-uglify": ">0",
+    "grunt-contrib-concat": ">0",
+    "grunt-contrib-clean": ">0",
+    "grunt-usemin": ">0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-copy-to": "0.0.10"
   }
