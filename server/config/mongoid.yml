@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: mongoid
+      hosts:
+        - mongodb:27017
