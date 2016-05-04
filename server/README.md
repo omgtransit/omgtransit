@@ -2,12 +2,6 @@ Server Setup
 ==============================
 
 Installation
-* `docker-compose build`
-* initialize db
-  *  `docker-compose run --rm railsweb bundle exec rake db:create db:migrate db:mongoid:create_indexes db:seed`
-* `docker-compose up`
-
-Installation
 ------------
  1. Download and install [ElasticSearch](http://www.elasticsearch.org/)
  2. Install Ruby 1.9.3
@@ -55,7 +49,7 @@ Specification (GTFS) files. More information on these files is available
 
 GTFS data is available at the [GTFS Exchange](http://www.gtfs-data-exchange.com/).
 
-Download these data files and put them in appropriately named folders in `/etc/omgtransit/setup/`.
+Download these data files and put them in appropriately named folders in `/data/setup/`.
 
 For instance, you can download the Minneapolis Metro Transit feed from
 [here](ftp://gisftp.metc.state.mn.us/google_transit.zip). And unzip this into

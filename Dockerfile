@@ -17,20 +17,15 @@ ENV ASSETS_HOME $APP_HOME/frontend
 RUN mkdir -p $SERVER_HOME
 RUN mkdir -p $API_HOME
 
+# npm install
+ADD frontend/ $ASSETS_HOME
+WORKDIR $ASSETS_HOME
+RUN npm install
+
 # bundle install
 WORKDIR /tmp
 ADD server/Gemfile Gemfile
 ADD server/Gemfile.lock Gemfile.lock
 RUN bundle install
-
-# mounts
-# TODO mount these later if possible
-ADD server/ $SERVER_HOME
-ADD frontend/ $ASSETS_HOME
-
-# generate build.js
-WORKDIR $ASSETS_HOME
-RUN npm install
-RUN grunt -v buildweb
 
 WORKDIR $SERVER_HOME
