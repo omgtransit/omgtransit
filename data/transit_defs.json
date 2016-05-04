@@ -1658,14 +1658,6 @@
       "jsclient_callback": "process_eta"
     },
     {
-      "desc":         "SideCar",
-      "id":           135,
-      "name":         "sidecar",
-      "eta_url":      "https://api.side.cr/vehicle/getNearbyDrivers/{LAT}/{LON}/{CLIENT}",
-      "format":       "json",
-      "transit_type": "ondemand"
-    },
-    {
       "id":                136, 
       "name":              "HOURCAR", 
       "url":               "",
