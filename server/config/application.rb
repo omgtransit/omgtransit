@@ -76,7 +76,7 @@ module OmgTransit
     config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
-    config.transit_data_path = '/etc/omgtransit/setup'
+    config.transit_data_path = '/data/gtfs_sources'
 
     config.to_prepare do
       DeviseController.respond_to :html, :json

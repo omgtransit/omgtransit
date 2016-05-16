@@ -4,14 +4,9 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-    volumes_from:
-      - mongodata
-    command: --smallfiles --rest --auth
-  mongodata:
-    image: mongo
     volumes:
-      - /data/db
-    command: --break-mongo
+      - mongodata:/data/db
+    command: --smallfiles --rest
   redis:
     image: redis
     ports:
@@ -57,5 +52,6 @@ services:
       sendgrid_user: omg_transit
       sendgrid_password: idk
 volumes:
-  assets: # web site assets go here
+  mongodata:    # mongodb data
+  assets:       # web site assets go here
   gtfs_sources: # GTFS data gets downloaded here when imported

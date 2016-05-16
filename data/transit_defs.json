@@ -51,7 +51,7 @@
         "url":               "http://svc.metrotransit.org/NexTrip/{stop_id}?format=json",
         "format":            "json",
         "parser":            "nextrip",
-        "stopdata":          "ftp://gisftp.metc.state.mn.us/google_transit.zip",
+        "stopdata":          "ftp://ftp.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_metc/trans_transit_schedule_google_fd/csv_trans_transit_schedule_google_fd.zip",
         "stopparser":        "gtfs",
         "transit_type":      "bus",
         "jsclient_callback": "process_eta"

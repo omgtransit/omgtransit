@@ -4,7 +4,7 @@ FROM phusion/passenger-ruby19:0.9.18
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && \
     apt-get upgrade -y && \
-    apt-get install -y build-essential curl libpq-dev && \
+    apt-get install -y build-essential curl wget unzip libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN npm install -g grunt grunt-cli
