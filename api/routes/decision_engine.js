@@ -18,7 +18,6 @@ var outside = {
 var request     = require('request');
 var Q           = require('q');
 var redis       = require("redis");
-var redisclient = redis.createClient();
 var utility     = require('../lib/utility');
 var _           = require('lodash');
 var moment      = require('moment-timezone');

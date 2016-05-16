@@ -1,7 +1,7 @@
 var request      = require('request');
 var Q            = require('q');
 var redis        = require("redis");
-var redisclient  = redis.createClient();
+var redisclient  = redis.createClient('6379', process.env.redis_host);
 var _            = require('lodash');
 var transit_defs = require('../lib/transit_defs');
 var moment       = require('moment-timezone');

@@ -9,7 +9,7 @@ var appDir = path.dirname(__dirname);
 
 appDir = appDir.replace(/api\/.*/,'api/'); //Bring us back to the app's root directory
 
-var tdef_path=path.join(appDir,'../transit_defs.json');
+var tdef_path=path.join(appDir,'../data/transit_defs.json');
     
 console.log('Loading transit_defs from: ' + tdef_path);
 
