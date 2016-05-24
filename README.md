@@ -1,3 +1,18 @@
+Dev Quick Start
+======================
+```
+docker-compose build
+# build frontend assets
+docker-compose run railsweb bash ./bin/buildweb.sh
+# setup datasources
+docker-compose run railsweb bundle exec rake db:create db:migrate db:mongoid:create_indexes db:seed
+# import some stops (see `server/RELOADING_STOPS.md`), e.g. MSP
+docker-compose run railsweb bundle exec rake "omgtransit:load_gtfs[MSP, STOPS]"
+# run the app on http://$(docker-machine ip):3000
+docker-compose up
+```
+
+
 Getting Things Running
 ======================
 

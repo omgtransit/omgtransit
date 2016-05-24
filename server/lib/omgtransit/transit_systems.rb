@@ -1,7 +1,7 @@
 module Omgtransit
   class TransitSystems
     def initialize
-      defsfile = File.open(Rails.root.join('../transit_defs.json'),"rb")
+      defsfile = File.open('/data/transit_defs.json',"rb")
       contents = defsfile.read
       @contents = JSON.parse(contents)
     end

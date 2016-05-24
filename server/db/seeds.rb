@@ -9,7 +9,7 @@
 Source.delete_all()
 
 #Read the master transit definition file
-defsfile = File.open(Rails.root.join('../transit_defs.json'),"rb")
+defsfile = File.open('/data/transit_defs.json',"rb")
 contents = defsfile.read
 contents = JSON.parse(contents)
 

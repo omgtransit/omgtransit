@@ -329,10 +329,9 @@ namespace :omgtransit do
       next
     end
 
-    #TODO (from Richard): Maybe this should be saved to '/etc/omgtransit/' or '/tmp/'
     source_name = source['name'].gsub(/ /,'')
-    zippath = Rails.root.join('setup',source_name+'_gtfs.zip')
-    folder_path = "setup/#{source_name}_gtfs"
+    zippath = File.join(Rails.configuration.transit_data_path,source_name+'_gtfs.zip')
+    folder_path = File.join(Rails.configuration.transit_data_path,source_name+'_gtfs')
 
     #Download only if it isn't there or hasn't been updated in a day
     if not File.exist?(zippath) or Time.now()-File.mtime(zippath)>=3600*24

@@ -25,9 +25,7 @@ gem 'compass-rails'
 gem 'httparty'
 gem 'jquery-rails'
 gem 'tire' # elasticsearch wrapper
-gem 'bcdatabase' # database credential management
 gem 'nokogiri'
-gem 'rvm-capistrano', require: false
 gem 'whenever'
 
 gem 'rubyzip'
@@ -68,10 +66,6 @@ gem 'stripe'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-gem 'capistrano', '~> 2.15'
-gem 'capistrano-grunt', '0.0.1'
 
 # To use debugger
 # gem 'debugger'

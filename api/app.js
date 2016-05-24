@@ -11,14 +11,13 @@ var express      = require('express');
 var fs           = require('fs');
 var https        = require('https');
 var path         = require('path');
-var childProcess = require("child_process");
 var url          = require('url');
 
 var _ = require('lodash');
 
 // Redis
 var redis        = require("redis"),
-    redisclient  = redis.createClient();
+    redisclient  = redis.createClient('6379', process.env.redis_host);
 
 
 GLOBAL.backendUrl = 'https://dev.omgtransit.com';

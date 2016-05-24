@@ -2,7 +2,7 @@ module.exports = function(grunt){
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    
+
     appConfig: {
       appRoot: 'www',
       webRoot: '../server/public/'
@@ -19,7 +19,7 @@ module.exports = function(grunt){
         }]
       }
     },
-    
+
     compass: {                  // Task
       dist: {                   // Target
         options: {              // Target options
@@ -65,7 +65,7 @@ module.exports = function(grunt){
     },
 
     copyto: {
-      
+
       web: {
         files: [
           {cwd: '<%= appConfig.appRoot %>/', src: ['**/*'], dest: '<%= appConfig.webRoot %>/'}
@@ -102,7 +102,7 @@ module.exports = function(grunt){
     },
 
     clean: {
-      web: ["<%= appConfig.webRoot %>"]
+      css: ["<%= appConfig.appRoot %>/assets/stylesheets"]
     },
 
     useminPrepare: {
@@ -150,8 +150,9 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('buildweb', [
+    'clean:css',
     'jst',
-    //'compass:dist',
+    'compass:dist',
     'useminPrepare',
     'concat',
     'cssmin',
@@ -163,5 +164,5 @@ module.exports = function(grunt){
   ]);
 
   grunt.registerTask('default', ['sass', 'compass', 'watch', 'jst', 'build']);
-  
+
 };

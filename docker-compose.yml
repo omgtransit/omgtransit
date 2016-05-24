@@ -1,12 +1,70 @@
 version: '2'
 services:
-  db:
-    image: postgres
-  app:
-    build: .
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
     volumes:
-      - ./server:/home/omg/app/server
+      - mongodata:/data/db
+    command: --smallfiles --rest
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  db:
+    image: mdillon/postgis
+    ports:
+      - "5432:5432"
+  railsweb:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./server:/usr/app/server
+      - ./data/:/data
+      - assets:/usr/app/server/public
+      - gtfs_sources:/data/gtfs_sources
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+      - mongodb
+      - elasticsearch
+    environment: &app_environment
+      # PostgreSQL Development Database:
+      DATABASE_URL: postgres://postgres:omg_development@db:5432/omg_development?pool=5&encoding=unicode&schema_search_path=public
+      # Enable the byebug debugging server - this can be overriden
+      # from the command line:
+      ENABLE_DEBUG_SERVER: 'true'
+
+      # Run the app in the 'development' environment:
+      RACK_ENV: development
+      RAILS_ENV: development
+
+      secret_key: 'not really a secret key for now kasjdbfjasdhblajb vlak34qaw4ar'
+      secret_token: 'not really a secret token for now kasjdbfjasdhblajb vlak34qaw4ar'
+      google_maps_api_key: idk
+      sendgrid_user: omg_transit
+      sendgrid_password: idk
+  nodeweb:
+    command: npm start
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile-api
+    volumes:
+      - ./api:/usr/app/api
+      - ./data:/usr/app/data
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - mongodb
+volumes:
+  mongodata:    # mongodb data
+  assets:       # web site assets go here
+  gtfs_sources: # GTFS data gets downloaded here when imported

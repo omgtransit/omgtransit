@@ -35,17 +35,12 @@ OmgTransit::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  config.google_maps_api_key = ENV['google_maps_api_key']
-
-  config.sendgrid = YAML.load_file("sendgrid.yml")[::Rails.env]
-  config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'} 
-  
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
     :user_name      => '',
-    :password       => config.sendgrid['SENDGRID_PASSWORD'],
+    :password       => OmgTransit::Application.config.sendgrid_password,
     :domain         => '',
     :enable_starttls_auto => true
   }
