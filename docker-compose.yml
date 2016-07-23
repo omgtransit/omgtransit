@@ -21,15 +21,18 @@ services:
     ports:
       - "5432:5432"
   railsweb:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    command: /sbin/my_init
     volumes:
-      - ./server:/usr/app/server
+      - ./server:/home/app/server
       - ./data/:/data
-      - assets:/usr/app/server/public
+      - assets:/home/app/server/public
       - gtfs_sources:/data/gtfs_sources
+      - bundle:/bundle
     ports:
-      - "3000:3000"
+      - "80:8080"
     depends_on:
       - db
       - redis
@@ -38,6 +41,7 @@ services:
     environment: &app_environment
       # PostgreSQL Development Database:
       DATABASE_URL: postgres://postgres:omg_development@db:5432/omg_development?pool=5&encoding=unicode&schema_search_path=public
+      REDIS_URL: redis://redis:6379/0
       # Enable the byebug debugging server - this can be overriden
       # from the command line:
       ENABLE_DEBUG_SERVER: 'true'
@@ -55,16 +59,17 @@ services:
     command: npm start
     build:
       context: ./api
-      dockerfile: ./Dockerfile-api
+      dockerfile: ./Dockerfile
     volumes:
-      - ./api:/usr/app/api
-      - ./data:/usr/app/data
+      - ./api:/usr/src/api
+      - ./data:/usr/src/data
     ports:
       - "8080:8080"
     depends_on:
       - redis
       - mongodb
 volumes:
+  bundle:       # cached bundler stuff
   mongodata:    # mongodb data
   assets:       # web site assets go here
   gtfs_sources: # GTFS data gets downloaded here when imported

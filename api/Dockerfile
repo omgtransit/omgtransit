@@ -1,13 +1,13 @@
 FROM node:argon
 
 # Setup Folders
-ENV API_HOME /usr/app/api
+ENV API_HOME /usr/src/api
 RUN mkdir -p $API_HOME
 
 WORKDIR $API_HOME
-COPY package.json /usr/app/api/
+COPY package.json $API_HOME
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/api
+COPY . $API_HOME
 

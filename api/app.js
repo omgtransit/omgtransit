@@ -9,7 +9,7 @@ console.log('Starting API server.');
 
 var express      = require('express');
 var fs           = require('fs');
-var https        = require('https');
+var http         = require('http');
 var path         = require('path');
 var url          = require('url');
 
@@ -24,29 +24,6 @@ GLOBAL.backendUrl = 'https://dev.omgtransit.com';
 
 // App settings
 var app              = express();
-var keyPath          = '/opt/nginx/certs/ssl_dev.key';
-var certPath         = '/opt/nginx/certs/ssl_dev.crt';
-
-// development only
-if ('local' == app.get('env')) {
-  keyPath  = '/etc/apache2/certs/server.key';
-  certPath = '/etc/apache2/certs/server.crt';
-  
-  app.use(express.errorHandler());
-  GLOBAL.backendUrl = 'https://omgtransit.it';
-}
-
-if ('onlinedev' == app.get('env')) {
-  keyPath  = '/opt/nginx/certs/ssl_dev.key';
-  certPath = '/opt/nginx/certs/ssl_dev.crt';
-  app.use(express.errorHandler());
-}
-
-if ('production' == app.get('env')) {
-  keyPath             = '/opt/nginx/certs/ssl_prod.key';
-  certPath            = '/opt/nginx/certs/ssl_prod.crt';
-  GLOBAL.backendUrl   = 'https://omgtransit.com';
-}
 
 var routes          = require('./routes');
 var stop            = require('./routes/stop');
@@ -66,16 +43,6 @@ app.use(express.compress());
 app.use(app.router);
 app.enable('trust proxy');
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-var privateKey  = fs.readFileSync(keyPath, 'utf8');
-var certificate = fs.readFileSync(certPath, 'utf8');
-
-var credentials = {
-  key: privateKey,
-  cert: certificate
-};
 
 // Listen for any options request
 app.options("*", function (req, res) {
@@ -139,7 +106,7 @@ app.get('/v1/statusbar-message', function(req,res){
   });
 });
 
-https.createServer(credentials, app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
