@@ -1,5 +1,10 @@
 Copyright (c) 2017 OMG Transit
 
+### Branding
+Matt Decuir reserves all rights to the OMG Transit branding, specified here as the name "OMG Transit" and it's logo.
+
+### Everything else
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
