@@ -25,6 +25,7 @@ services:
   webapp:
     restart: always
     build: ./
+    command: /sbin/my_init --enable-insecure-key
     volumes:
       - ./server:/home/app/ruby-api         # rails app
       - ./api:/home/app/node-api            # node app
@@ -50,13 +51,13 @@ services:
       # Run Rails in dev mode
       RACK_ENV: development
       RAILS_ENV: development
+      RAILS_SECRET_TOKEN: "some secret phrase of at least 30 characters sdfkndflgjbasfkgjbsdfkjgbsdfg"
 
       # Rails secrets
-      secret_key: 'not really a secret key for now kasjdbfjasdhblajb vlak34qaw4ar'
-      secret_token: 'not really a secret token for now kasjdbfjasdhblajb vlak34qaw4ar'
-      google_maps_api_key: idk
-      sendgrid_user: omg_transit
-      sendgrid_password: idk
+      DEVISE_SECRET_KEY: 'not really a secret key for now kasjdbfjasdhblajb vlak34qaw4ar'
+      GOOGLE_MAPS_API_KEY: idk
+      SENDGRID_USER: omg_transit
+      SENDGRID_PASSWORD: idk
 #  nodeweb:
 #    command: npm start
 #    build:

@@ -69,10 +69,10 @@ module OmgTransit
     config.assets.version = '1.0'
 
 
-    config.google_maps_api_key = ENV['google_maps_api_key']
+    config.google_maps_api_key = ENV['GOOGLE_MAPS_API_KEY']
 
-    config.sendgrid_password =  ENV['sendgrid_password']
-    config.sendgrid_user     =  ENV['sendgrid_user']
+    config.sendgrid_password =  ENV['SENDGRID_PASSWORD']
+    config.sendgrid_user     =  ENV['SENDGRID_USER']
     config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net'}
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"

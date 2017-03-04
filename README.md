@@ -8,7 +8,7 @@ docker-compose run webapp bash /home/app/rails-api/bin/buildweb.sh
 docker-compose run webapp bash /home/app/rails-api/bin/builddb.sh
 # import some stops (see `server/RELOADING_STOPS.md`), e.g. MSP
 docker-compose run webapp bash /home/app/rails-api/bin/import.sh
-# run the app on http://$(docker-machine ip):3000
+# run the app at http://localhost/
 docker-compose up
 ```
 
