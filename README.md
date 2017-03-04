@@ -1,5 +1,21 @@
-Getting Things Running
-======================
+# Overview
+[OMG Transit](https://omgtransit.com) is an open source real-time transit aggregation service.
+
+OMG Transit was [developed at a Minneapolis-based hackathon](https://omgtransit.com/blog/2014/06/04/the-omg-transit-story/) in June 2013 and evolved to support both the Twin Cities and Chicago.
+
+# Usage Guidelines
+Our codebase was open-sourced in February 2016 and we encourage you to submit pull requests!
+
+Our back-end is Ruby on Rails with a splash of Node. Our front-end uses Backbone. Cordova is used to generate mobile apps for Android and iOS.
+
+This project is not very easy to get up and running locally, but we're currently working to improve that.
+
+## [License](LICENSE.md)
+We reserve all rights to the OMG Transit name and logo, but our software is available under an MIT license.
+
+-----
+# Setup
+## Getting Things Running
 
 1. Set up some hostnames
   * Edit `/etc/hosts` and add the lines
@@ -54,8 +70,8 @@ Getting Things Running
            Require all granted
         </Directory>
 
-        SSLEngine on 
-        SSLOptions +StrictRequire 
+        SSLEngine on
+        SSLOptions +StrictRequire
         SSLCertificateFile /etc/apache2/certs/server.crt
         SSLCertificateKeyFile /etc/apache2/certs/server.key
     </VirtualHost>
@@ -85,8 +101,8 @@ Getting Things Running
            Require all granted
         </Directory>
 
-        SSLEngine on 
-        SSLOptions +StrictRequire 
+        SSLEngine on
+        SSLOptions +StrictRequire
         SSLCertificateFile /etc/apache2/certs/server.crt
         SSLCertificateKeyFile /etc/apache2/certs/server.key
     </VirtualHost>
@@ -94,10 +110,13 @@ Getting Things Running
 9. Restart Apache
   * `sudo service apache2 restart`
 
-Running It All
-==============
+## Running It All
 Switch into the **api** directory. Run:
 
     NODE_ENV=local node app
 
 Load up "https://omgtransit.it" in a browser
+
+----
+# Testing
+We currently don't have very good tests and need to improve them. This is where testing will be documented better in the future.
