@@ -20,19 +20,20 @@ services:
     image: mdillon/postgis
     ports:
       - "5432:5432"
-  railsweb:
-    build:
-      context: .
-      dockerfile: ./server/Dockerfile
-    command: /sbin/my_init
+  # nginx+passenger
+  # there's a rails app and a node app
+  webapp:
+    restart: always
+    build: ./
     volumes:
-      - ./server:/home/app/server
-      - ./data/:/data
-      - assets:/home/app/server/public
-      - gtfs_sources:/data/gtfs_sources
-      - bundle:/bundle
+      - ./server:/home/app/ruby-api         # rails app
+      - ./api:/home/app/node-api            # node app
+      - ./data/:/data                       # project data dir
+      - assets:/home/app/server/public      # front end assets
+      - gtfs_sources:/data/gtfs_sources     # GTFS input data
+      - bundle:/bundle                      # for bundle installs
     ports:
-      - "80:8080"
+      - "80:80"
     depends_on:
       - db
       - redis
@@ -46,28 +47,29 @@ services:
       # from the command line:
       ENABLE_DEBUG_SERVER: 'true'
 
-      # Run the app in the 'development' environment:
+      # Run Rails in dev mode
       RACK_ENV: development
       RAILS_ENV: development
 
+      # Rails secrets
       secret_key: 'not really a secret key for now kasjdbfjasdhblajb vlak34qaw4ar'
       secret_token: 'not really a secret token for now kasjdbfjasdhblajb vlak34qaw4ar'
       google_maps_api_key: idk
       sendgrid_user: omg_transit
       sendgrid_password: idk
-  nodeweb:
-    command: npm start
-    build:
-      context: ./api
-      dockerfile: ./Dockerfile
-    volumes:
-      - ./api:/usr/src/api
-      - ./data:/usr/src/data
-    ports:
-      - "8080:8080"
-    depends_on:
-      - redis
-      - mongodb
+#  nodeweb:
+#    command: npm start
+#    build:
+#      context: ./api
+#      dockerfile: ./Dockerfile
+#    volumes:
+#      - ./api:/usr/src/api
+#      - ./data:/usr/src/data
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - redis
+#      - mongodb
 volumes:
   bundle:       # cached bundler stuff
   mongodata:    # mongodb data
