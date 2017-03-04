@@ -101,11 +101,3 @@ Switch into the **api** directory. Run:
     NODE_ENV=local node app
 
 Load up "https://omgtransit.it" in a browser
-
-Running on Docker
-=================
-
-1. [Install Docker Engine](https://docs.docker.com/engine/installation/)
-2. [Install Docker Compose](https://docs.docker.com/compose/install/)
-3. `docker-compose build`
-4. `docker-compose up`

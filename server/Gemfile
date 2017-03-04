@@ -27,7 +27,7 @@ gem 'jquery-rails'
 gem 'tire' # elasticsearch wrapper
 gem 'bcdatabase' # database credential management
 gem 'nokogiri'
-gem 'rvm-capistrano', require: false
+gem 'rvm-capistrano'
 gem 'whenever'
 
 gem 'rubyzip'
