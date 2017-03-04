@@ -14,29 +14,17 @@ Installation
  8. Run `bundle`
    * May need `sudo apt-get install libpq-dev`
 
-One liner on debian...
-
-```
-sudo apt-get install elasticsearch postgresql postgis nodejs redis-server mongodb-org libpq-dev && bundle install
-```
-
-... except for install Ruby. For that:
-
-```
-rvm install <the version reported above>
-```
-
 Database Setup
 --------------
 
  1. Create a PostGRES database
-   1. `sudo -u postgres psql`
-   2. `CREATE USER user WITH PASSWORD 'password';`
-   3. `CREATE DATABASE omgtransit;`
-   4. `GRANT ALL PRIVILEGES ON DATABASE omgtransit TO user;`
+   1. `CREATE USER user WITH PASSWORD 'password';`
+   2. `CREATE DATABASE omgtransit;`
+   3. `GRANT ALL PRIVILEGES ON DATABASE omgtransit TO user;`
  2. Load the PostGIS extension
-   1. `sudo -u postgres psql -d omgtranst`
-   2. `CREATE EXTENSION postgis;`
+   1. `sudo -u postgres createlang plpgsql omgtransit;`
+   2. `sudo -u postgres psql -d omgtransit -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql`
+   3. `sudo -u postgres psql -d omgtransit -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql`
  3. Run `sudo mkdir -p /etc/nubic/db`
  4. Create the file `/etc/nubic/db/omgtransit.yml`
  5. Set up `/etc/nubic/db/omgtransit.yml` according to **Setting up Database Credentials**
